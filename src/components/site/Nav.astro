@@ -1,0 +1,35 @@
+---
+// The lens switcher is the main navigation: Research / Design / Product, numbered in loop order,
+// always visible (no hamburger hiding the pillars). The current pillar gets a red rule.
+import Logo from './Logo.astro';
+import { pillars, type PillarId } from '@/data/site';
+interface Props { pillar?: PillarId }
+const { pillar } = Astro.props;
+const path = Astro.url.pathname;
+---
+<header class="sticky top-0 z-40 border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--paper)_88%,transparent)] backdrop-blur-md">
+	<div class="wrap grid desk:h-[var(--nav-h)] min-h-[62px] grid-cols-[auto_1fr] items-center gap-x-6 desk:grid-cols-[1fr_auto_1fr]">
+		<a href="/" class="py-3" aria-label="Mediabarn home"><Logo class="h-[38px] w-auto pad:h-[42px]" /></a>
+
+		<nav aria-label="Pillars" class="col-span-2 row-start-2 -mx-[var(--gut)] border-t border-[var(--line)] desk:col-span-1 desk:col-start-2 desk:row-start-1 desk:mx-0 desk:border-0">
+			<ol role="list" class="grid grid-cols-3 desk:w-[600px]">
+				{pillars.map((p, i) => (
+					<li class:list={[i > 0 && 'border-l border-[var(--line)]']}>
+						<a href={p.href} aria-current={pillar === p.id ? 'page' : undefined}
+							class="group relative flex items-baseline justify-center gap-2 whitespace-nowrap px-2 py-3 desk:h-[var(--nav-h)] desk:items-center desk:py-0">
+							<span class="font-mono text-[11px] text-[var(--ink-muted)]" aria-hidden="true">0{i + 1}</span>
+							<span class:list={['text-[15px] font-semibold', pillar === p.id ? 'text-[var(--red-ink)]' : 'text-[var(--ink)] group-hover:text-[var(--red-ink)]']}>{p.name}</span>
+							<span class="hidden font-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--ink-muted)] tab:inline">/ {p.verb}</span>
+							<span class:list={['absolute inset-x-3 bottom-0 h-[2px] origin-left bg-[var(--red)] transition-transform duration-300', pillar === p.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100']} aria-hidden="true"></span>
+						</a>
+					</li>
+				))}
+			</ol>
+		</nav>
+
+		<nav aria-label="Company" class="flex items-center justify-end gap-6 text-[15px]">
+			<a href="/about/" aria-current={path.startsWith('/about') ? 'page' : undefined} class="hidden font-medium hover:text-[var(--red-ink)] pad:inline aria-[current=page]:text-[var(--red-ink)]">About</a>
+			<a href="/contact/" class="btn !px-4 !py-2.5 !text-[14.5px]">Contact us</a>
+		</nav>
+	</div>
+</header>

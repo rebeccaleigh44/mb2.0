@@ -1,0 +1,13 @@
+---
+// Two-tone heading (voice guide): `em` is the one word that carries the emphasis, in brand red.
+// The default slot is the one-line thesis that opens the section.
+interface Props { overline?: string; before?: string; em: string; after?: string; as?: 'h1' | 'h2'; wide?: boolean; class?: string }
+const { overline, before = '', em, after = '', as: Tag = 'h2', wide = false, class: cls } = Astro.props;
+---
+<header class:list={['grid gap-5', !wide && 'desk:grid-cols-[1.1fr_.9fr] desk:items-end desk:gap-16', cls]}>
+	<div>
+		{overline && <p class="eyebrow eyebrow-em mb-4">{overline}</p>}
+		<Tag class:list={[!wide && 'max-w-[16ch]']}>{before}<span class="em">{em}</span>{after}</Tag>
+	</div>
+	{Astro.slots.has('default') && <p class:list={['lede', !wide && 'max-w-[50ch] desk:border-l desk:border-[var(--line)] desk:pl-8']}><slot /></p>}
+</header>

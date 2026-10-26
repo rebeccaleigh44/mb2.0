@@ -1,0 +1,33 @@
+---
+// The brand's wireframe waves (mediabarninc.com hero), redrawn as vector at build time:
+// a twisted ribbon of fine parallel lines. Decorative only. Color follows --wave per section tone.
+interface Props { seed?: number; lines?: number; class?: string; opacity?: number }
+const { seed = 1, lines = 54, class: cls, opacity = 1 } = Astro.props;
+
+const W = 1600, H = 900;
+const r = (n: number) => { const x = Math.sin(seed * 9301 + n * 49297) * 233280; return x - Math.floor(x); };
+const a1 = 120 + r(1) * 120, f1 = 0.0022 + r(2) * 0.0014, p1 = r(3) * 6.28;
+const a2 = 40 + r(4) * 60, f2 = 0.005 + r(5) * 0.003, p2 = r(6) * 6.28;
+const wBase = 300 + r(7) * 160, wAmp = 80 + r(8) * 100, fw = 0.003 + r(9) * 0.002;
+const twist = 0.0036 + r(10) * 0.0024, pt = r(11) * 6.28;
+const cy = H * (0.42 + r(12) * 0.2);
+
+const paths: string[] = [];
+for (let i = 0; i < lines; i++) {
+	const t = i / (lines - 1) - 0.5;
+	let d = '';
+	for (let x = -60; x <= W + 60; x += 14) {
+		const mid = cy + a1 * Math.sin(x * f1 + p1) + a2 * Math.sin(x * f2 + p2);
+		const w = wBase + wAmp * Math.sin(x * fw + p2);
+		const ph = x * twist + pt;
+		const y = mid + w * t * Math.sin(ph) + 70 * t * Math.cos(ph);
+		d += `${d ? 'L' : 'M'}${x} ${y.toFixed(1)}`;
+	}
+	paths.push(d);
+}
+---
+<svg class:list={['pointer-events-none absolute inset-0 h-full w-full', cls]} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" style={`opacity:${opacity}`}>
+	<g fill="none" stroke="var(--wave)" stroke-width="0.8" vector-effect="non-scaling-stroke">
+		{paths.map((d) => <path d={d} vector-effect="non-scaling-stroke" />)}
+	</g>
+</svg>

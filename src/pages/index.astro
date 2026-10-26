@@ -1,0 +1,218 @@
+---
+// Home: "The loop" (concept B, chosen 2026-10-26). The pillars are three stages of one cycle:
+// Understand → Shape → Run → back to Understand. A sticky drafting diagram tracks the scroll.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/site/Section.astro';
+import SectionHeader from '@/components/site/SectionHeader.astro';
+import Note from '@/components/site/Note.astro';
+import Placeholder from '@/components/site/Placeholder.astro';
+import Waves from '@/components/site/Waves.astro';
+import Proof from '@/components/site/Proof.astro';
+import Cta from '@/components/site/Cta.astro';
+import { pillars, products } from '@/data/site';
+
+const chapters = [
+	{
+		id: 'research',
+		q: 'What do people actually need?',
+		body: 'We watch real people use your product, service, or website, in our Arlington lab or remotely. We recruit the right participants, moderate the sessions, and tell you what we saw, not what we assumed.',
+		example: 'A federal agency learns that most people abandon a benefits form at the same question, and why.',
+		mood: 'sand' as const,
+	},
+	{
+		id: 'design',
+		q: 'What should the experience be?',
+		body: 'Using Human-Centered Design (HCD), we turn findings into journey maps, service blueprints, and prototypes, then test them again with the same kinds of people. Accessibility and Section 508 compliance are part of the work from the start.',
+		example: 'The form is redesigned around how applicants describe their situation, and tested until they finish it.',
+		mood: 'ember' as const,
+	},
+	{
+		id: 'product',
+		q: 'How does it keep working?',
+		body: 'Some problems show up across many clients. For those, we build and support software: Chirp, Edjit, CXAlign, and Mediabarn Time. Each one is tested with its users, which sends us back to research.',
+		example: 'A health system tracks every patient experience initiative in CXAlign and sees where the next round of research is needed.',
+		mood: 'clay' as const,
+	},
+];
+
+// Loop diagram geometry (viewBox 440 × 440): three nodes on a circle, 120° apart, starting at the top
+const C = 220, R = 150;
+const nodes = pillars.map((p, i) => {
+	const a = (-90 + i * 120) * (Math.PI / 180);
+	return { ...p, n: i + 1, x: C + R * Math.cos(a), y: C + R * Math.sin(a) };
+});
+const ticks = Array.from({ length: 72 }, (_, i) => {
+	const a = (i * 5) * (Math.PI / 180), long = i % 6 === 0;
+	const r1 = 196, r2 = long ? 186 : 191;
+	return { x1: C + r1 * Math.cos(a), y1: C + r1 * Math.sin(a), x2: C + r2 * Math.cos(a), y2: C + r2 * Math.sin(a), long };
+});
+---
+
+<BaseLayout title="Understand. Shape. Run." description="Mediabarn brings research, design, and product together in one loop, using Human-Centered Design.">
+	{/* ---------- Hero ---------- */}
+	<section class="noisy glow-paper fibers relative overflow-hidden" aria-labelledby="hero-h">
+		<Waves seed={1} lines={60} />
+		{/* drafting overlay: thirds, a baseline, and sheet labels */}
+		<div class="pointer-events-none absolute inset-0 hidden desk:block" aria-hidden="true">
+			<div class="wrap relative h-full">
+				<div class="absolute inset-y-0 left-[var(--gut)] border-l border-[var(--line)]"></div>
+				<div class="absolute inset-y-0 right-[var(--gut)] border-r border-[var(--line)]"></div>
+				<div class="absolute inset-y-0 left-[66%] border-l border-dashed border-[var(--line)]"></div>
+				<span class="eyebrow absolute right-[calc(var(--gut)+12px)] top-6">Sheet 01 / The loop</span>
+				<span class="eyebrow absolute bottom-6 left-[calc(66%+12px)]">Arlington, VA · Virginia Beach, VA</span>
+			</div>
+		</div>
+		<div class="wrap relative grid min-h-[min(820px,calc(100svh-var(--nav-h)))] content-center gap-10 py-20 desk:py-28">
+			<p class="eyebrow eyebrow-em flex items-center gap-3"><span class="h-px w-8 bg-[var(--red)]" aria-hidden="true"></span>Mediabarn · Human-Centered Design</p>
+			<h1 id="hero-h" class="max-w-[11ch]">Understand. Shape. Run. <span class="em">Repeat.</span></h1>
+			<div class="grid gap-10 desk:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] desk:items-end">
+				<p class="lede max-w-[46ch] !text-[var(--ink)]">Most firms do one of these. We do all three, in order, and each one makes the next one better. Scroll to see how the loop works, or jump to the part you need.</p>
+				<ol role="list" class="grid border-t border-[var(--line-strong)] desk:max-w-[440px] desk:justify-self-end">
+					{nodes.map((p) => (
+						<li class="border-b border-[var(--line)]">
+							<a href={`#ch-${p.id}`} class="group flex items-baseline gap-4 py-3.5">
+								<span class="font-mono text-[12px] text-[var(--red-ink)]">0{p.n}</span>
+								<span class="text-[17px] font-semibold">{p.verb}</span>
+								<span class="font-mono text-[11.5px] uppercase tracking-[0.12em] text-[var(--ink-muted)]">/ {p.name}</span>
+								<span class="arrow ml-auto text-[var(--red-ink)]" aria-hidden="true">↓</span>
+							</a>
+						</li>
+					))}
+				</ol>
+			</div>
+		</div>
+	</section>
+
+	{/* ---------- The loop ---------- */}
+	<section class="rule fibers relative bg-[var(--paper-light)]" aria-labelledby="loop-h">
+		<h2 id="loop-h" class="sr-only">How the loop works</h2>
+		<div class="wrap grid desk:grid-cols-[minmax(0,.92fr)_minmax(0,1.08fr)] desk:gap-20">
+			{/* Sticky diagram. Desktop: a drafting circle with three stations. Below desk: a step bar under the nav. */}
+			<div class="loop-pin sticky z-10 -mx-[var(--gut)] border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--paper-light)_92%,transparent)] px-[var(--gut)] py-2.5 backdrop-blur desk:mx-0 desk:h-[calc(100svh-var(--nav-h))] desk:max-h-[760px] desk:border-0 desk:bg-transparent desk:p-0 desk:py-12 desk:backdrop-blur-none">
+				<div class="hidden h-full flex-col desk:flex">
+					<p class="eyebrow mb-2">Fig. 01 / The loop</p>
+					<svg viewBox="0 0 440 440" class="min-h-0 w-full flex-1" aria-hidden="true">
+						<circle cx={C} cy={C} r="205" fill="none" stroke="var(--line)" />
+						{ticks.map((t) => <line x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} stroke={t.long ? 'var(--line-strong)' : 'var(--line)'} />)}
+						<circle cx={C} cy={C} r={R} fill="none" stroke="var(--line-strong)" stroke-dasharray="2 6" />
+						<circle id="loop-arc" cx={C} cy={C} r={R} fill="none" stroke="var(--red)" stroke-width="1.5" pathLength="300" stroke-dasharray="0 300" transform={`rotate(-90 ${C} ${C})`} />
+						<line x1={C} y1="12" x2={C} y2="428" stroke="var(--line)" />
+						<line x1="12" y1={C} x2="428" y2={C} stroke="var(--line)" />
+						<circle cx={C} cy={C} r="62" fill="var(--paper-light)" stroke="var(--line)" />
+						<text x={C} y={C - 4} text-anchor="middle" class="font-serif" style="font-size:26px" fill="var(--ink)">HCD</text>
+						<text x={C} y={C + 16} text-anchor="middle" style="font:500 8.5px var(--font-mono);letter-spacing:.14em" fill="var(--ink-muted)">HUMAN-CENTERED</text>
+						{nodes.map((n) => (
+							<g data-node={n.id} class="node">
+								<circle cx={n.x} cy={n.y} r="54" class="node-disc" />
+								<text x={n.x} y={n.y - 18} text-anchor="middle" class="node-num">0{n.n}</text>
+								<text x={n.x} y={n.y + 6} text-anchor="middle" class="node-verb">{n.verb}</text>
+								<text x={n.x} y={n.y + 22} text-anchor="middle" class="node-name">{n.name.toUpperCase()}</text>
+							</g>
+						))}
+					</svg>
+					<p class="eyebrow mt-2 text-right">Research → Design → Product → Research</p>
+				</div>
+				<ol role="list" class="grid grid-cols-3 gap-1.5 desk:hidden" aria-hidden="true">
+					{nodes.map((p) => <li data-node={p.id} class="row-node flex items-baseline justify-center gap-1.5 border border-[var(--line)] py-1.5 text-[13px] font-semibold"><span class="font-mono text-[10.5px]">0{p.n}</span>{p.verb}</li>)}
+				</ol>
+			</div>
+
+			<div>
+				{chapters.map((c, i) => {
+					const p = pillars.find((x) => x.id === c.id)!;
+					return (
+						<article id={`ch-${c.id}`} data-chapter={c.id} aria-labelledby={`ch-${c.id}-h`} class="flex min-h-[85svh] flex-col justify-center gap-6 border-b border-[var(--line)] py-20 last:border-0">
+							<p class="eyebrow flex items-center gap-3"><span class="eyebrow-em">0{i + 1}</span><span class="h-px w-8 bg-[var(--line-strong)]" aria-hidden="true"></span>{p.verb} / {p.name}</p>
+							<h3 id={`ch-${c.id}-h`} class="h2 max-w-[16ch]">{c.q.replace(/\s(\S+)\?$/, ' $1?')}</h3>
+							<p class="lede">{c.body}</p>
+							<Placeholder label={`${p.name}: photography`} ratio="16/9" mood={c.mood} />
+							<div class="grid gap-1 border-l-2 border-[var(--red)] pl-5">
+								<p class="eyebrow">In practice</p>
+								<p class="body">{c.example}</p>
+							</div>
+							<a href={p.href} class="btn self-start max-pad:w-full max-pad:self-stretch">Explore {p.name} <span class="arrow" aria-hidden="true">→</span></a>
+						</article>
+					);
+				})}
+				<div class="py-16">
+					<p class="h2 mb-4 !text-[clamp(28px,3vw,40px)]">…and back to <span class="em">Understand</span>.</p>
+					<p class="body max-w-[52ch]">Every product we run and every design we ship goes back through research. That’s the loop, and it’s why the work gets better over time.</p>
+					<Note class="mt-6">“In practice” lines are illustrative and need real (or anonymized) client examples before launch.</Note>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{/* ---------- Product index ---------- */}
+	<Section label="Index / Products">
+		<SectionHeader before="Software that came out of the " em="work" after=".">We kept seeing the same problems across clients, so we built tools for them. Each one runs on the same research and design methods as our client work.</SectionHeader>
+		<ol role="list" class="mt-16 border-t border-[var(--line-strong)]">
+			{products.map((p, i) => (
+				<li class="border-b border-[var(--line)]">
+					<a href={p.href} class="group grid items-baseline gap-x-8 gap-y-2 py-7 tab:grid-cols-[48px_1fr_1.4fr_auto]">
+						<span class="font-mono text-[12px] text-[var(--red-ink)]">P{String(i + 1).padStart(2, '0')}</span>
+						<span><span class="font-serif text-[clamp(30px,3.2vw,44px)] leading-none transition-colors group-hover:text-[var(--red-ink)]">{p.name}</span><span class="eyebrow mt-2 block">For {p.for.toLowerCase()}</span></span>
+						<span class="body">{p.summary}</span>
+						<span class="arrow hidden text-[22px] text-[var(--red-ink)] tab:inline" aria-hidden="true">→</span>
+					</a>
+				</li>
+			))}
+		</ol>
+		<a href="/product/" class="link mt-8 inline-block">All products <span class="arrow" aria-hidden="true">→</span></a>
+	</Section>
+
+	{/* ---------- Sectors ---------- */}
+	<Section tone="light" label="Where we work">
+		<SectionHeader before="Built for people who serve the " em="public" after=".">Most of our work is in two areas where experience is hardest to get right: government services and healthcare.</SectionHeader>
+		<div class="mt-16 grid gap-8 tab:grid-cols-2">
+			{[
+				{ t: 'Federal', d: 'Agencies use us to make forms, portals, and services easier for citizens and taxpayers to use, with accessibility and Section 508 compliance built in.', h: '/federal/', mood: 'dusk' as const },
+				{ t: 'Healthcare', d: 'Health systems and health plans use us to map the patient journey, find where it breaks, and track the work that fixes it.', h: '/healthcare/', mood: 'clay' as const },
+			].map((x, i) => (
+				<a href={x.h} class="group block">
+					<Placeholder label={`${x.t}: photography`} ratio="3/2" mood={x.mood} />
+					<div class="mt-6 flex items-baseline gap-4"><span class="font-mono text-[12px] text-[var(--red-ink)]">S0{i + 1}</span><h3 class="h2 !text-[clamp(30px,3vw,42px)] group-hover:text-[var(--red-ink)]">{x.t} <span class="arrow text-[0.6em]" aria-hidden="true">→</span></h3></div>
+					<p class="body mt-3 max-w-[48ch]">{x.d}</p>
+				</a>
+			))}
+		</div>
+	</Section>
+
+	<Proof />
+	<Cta />
+</BaseLayout>
+
+<style>
+	/* Pinned under the nav: the nav is two rows below desk (logo, then pillars) */
+	.loop-pin { top: var(--nav-stack); }
+	@media (width >= 1021px) { .loop-pin { top: var(--nav-h); } }
+
+	.node-disc { fill: var(--paper-light); stroke: var(--line-strong); stroke-width: 1; transition: fill .4s, stroke .4s; }
+	.node-num { font: 500 9px var(--font-mono); letter-spacing: .12em; fill: var(--red-ink); transition: fill .4s; }
+	.node-verb { font: 400 18px var(--font-serif); fill: var(--ink); transition: fill .4s; }
+	.node-name { font: 500 8px var(--font-mono); letter-spacing: .14em; fill: var(--ink-muted); transition: fill .4s; }
+	.node.on .node-disc { fill: var(--red-deep); stroke: var(--red-deep); }
+	.node.on .node-num, .node.on .node-verb { fill: var(--paper-light); }
+	.node.on .node-name { fill: color-mix(in srgb, var(--paper-light) 80%, transparent); }
+	#loop-arc { transition: stroke-dasharray .8s var(--ease); }
+	.row-node { transition: background-color .3s, color .3s; }
+	.row-node.on { background: var(--red-deep); border-color: var(--red-deep); color: #FFFFFF; }
+</style>
+<script is:inline>
+	(() => {
+		if (!('IntersectionObserver' in window)) return;
+		const nodes = document.querySelectorAll('[data-node]');
+		const arc = document.getElementById('loop-arc');
+		const order = ['research', 'design', 'product'];
+		const set = (id) => {
+			nodes.forEach((n) => n.classList.toggle('on', n.dataset.node === id));
+			// the red arc grows around the circle as the visitor moves through the loop (100 per stage)
+			if (arc) arc.setAttribute('stroke-dasharray', `${(order.indexOf(id) + 1) * 100} 300`);
+		};
+		set('research');
+		const io = new IntersectionObserver((es) => {
+			for (const e of es) if (e.isIntersecting) set(e.target.dataset.chapter);
+		}, { rootMargin: '-45% 0px -45% 0px' });
+		document.querySelectorAll('[data-chapter]').forEach((c) => io.observe(c));
+	})();
+</script>

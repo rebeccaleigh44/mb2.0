@@ -1,0 +1,109 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Waves from '@/components/site/Waves.astro';
+import Section from '@/components/site/Section.astro';
+import SectionHeader from '@/components/site/SectionHeader.astro';
+import Note from '@/components/site/Note.astro';
+import Placeholder from '@/components/site/Placeholder.astro';
+import Cta from '@/components/site/Cta.astro';
+
+const terms = [
+	{ t: 'Customer Experience (CX)', d: 'CX is the entirety of a customer’s journey with a product, company, or brand. Seeing a message on a billboard, making an online purchase, and calling a help desk are all examples of a customer experience.' },
+	{ t: 'User Experience (UX)', d: 'UX is the digital channel of CX, since interactions with digital products and services are often a large part of the customer experience. Because so many of the products we work on are mainly digital, much of our work is UX research and design.' },
+	{ t: 'Service Design (SD)', d: 'Service Design unifies the entire system. It connects the front-end touchpoints customers interact with to the behind-the-scenes people, processes, and content that deliver the service.' },
+];
+const capabilities = [
+	{ t: 'Strategy and planning', items: ['Product strategy', 'CX and UX strategy', 'Agile ceremonies', 'Content strategy', 'Design thinking and elaboration', 'Project management'] },
+	{ t: 'Research', items: ['Persona development', 'Usability testing', 'Card sorts and tree tests', 'Participant recruitment', 'Ethnography', 'Heuristic evaluations'], link: { href: '/research/', label: 'Full research services' } },
+	{ t: 'Design', items: ['Journey maps and service blueprints', 'Information architecture', 'UI and interaction design', 'Interactive prototypes (Figma, HTML/CSS)', 'Design systems and governance', 'Accessibility and Section 508 compliance'] },
+];
+const why = [
+	{ t: 'HCD specialization', d: 'We are specialists, not generalists. Our team applies focused expertise across strategy, customer research, experience design, and service design, so each part of the work is done by someone who does it every day.' },
+	{ t: 'Our own research labs', d: 'We were one of the first CX consultancies to build in-house research lab facilities. With full lab operations and a dedicated recruiting team, we involve real users throughout the design process, not just at the end.' },
+	{ t: 'We recommend what fits', d: 'We build a few products of our own, and they came out of client work. But when we design for you, we recommend the tools and platforms that fit your needs, including ones we don’t make. The experience comes first.' },
+];
+const cases = [
+	{ who: 'Federal agency', t: '[Case study title]', d: '[One-sentence outcome: what changed for citizens, with a number if we have one.]' },
+	{ who: 'Health system', t: '[Case study title]', d: '[One-sentence outcome: what changed for patients or staff.]' },
+	{ who: 'Commercial', t: '[Case study title]', d: '[One-sentence outcome: what changed for customers.]' },
+];
+---
+
+<BaseLayout title="Experience Design" pillar="design" description="Human-Centered Design for service design, customer experience, and user experience.">
+	<section class="page-hero noisy glow-paper fibers relative overflow-hidden py-[clamp(56px,8vw,120px)]">
+		<Waves seed={4} opacity={0.8} />
+		<div class="wrap grid gap-10 desk:grid-cols-[1.1fr_.9fr] desk:items-end">
+			<div>
+				<p class="eyebrow mb-4">Design · Experience Design Studio</p>
+				<h1 class="mb-6 max-w-[16ch]">Designing experiences the <span class="em">human-centered</span> way.</h1>
+				<p class="lede max-w-[54ch]">We use Human-Centered Design (HCD) to understand what people need, collect their feedback, and use it to improve services and products. Whether the people are customers, citizens, patients, or employees, every design we make is informed by research.</p>
+				<div class="mt-8 flex flex-wrap gap-3"><a href="/contact/" class="btn max-pad:w-full">Talk to the design team</a><a href="#what" class="btn btn-outline max-pad:w-full">What we do</a></div>
+			</div>
+			<Placeholder label="Studio photo: team at a journey-map wall" ratio="4/3" />
+		</div>
+	</section>
+
+	<Section tone="light" id="think">
+		<SectionHeader overline="How we think" before="CX, UX, and Service Design are " em="not" after=" the same thing.">These terms are often used interchangeably. We provide all three, and we think it’s worth explaining the difference.</SectionHeader>
+		<div class="mt-12 grid gap-10 desk:grid-cols-[.8fr_1.2fr] desk:items-start">
+			<Placeholder label="Diagram: CX / UX / SD Venn (existing art)" ratio="1/1" />
+			<dl class="grid gap-8">
+				{terms.map((x) => <div class="border-t border-[var(--line)] pt-5"><dt class="h3 mb-2">{x.t}</dt><dd class="body">{x.d}</dd></div>)}
+			</dl>
+		</div>
+		<Note class="mt-8">Interaction idea for later: make the Venn diagram the control. Hover or tap a circle to highlight its definition. Copy stays as is (lightly tightened from the current site).</Note>
+	</Section>
+
+	<Section id="what">
+		<SectionHeader overline="What we do" before="Strategy, research, and " em="design" after=", under one roof.">A full range of capabilities, from the first stakeholder interview to a tested, accessible design.</SectionHeader>
+		<div class="mt-12 grid gap-10 desk:grid-cols-3">
+			{capabilities.map((c) => (
+				<div>
+					<span class="mb-5 block font-mono text-[12px] text-[var(--red-ink)]">{`0${capabilities.indexOf(c) + 1}`} <span class="ml-2 inline-block h-px w-8 bg-[var(--line-strong)] align-middle"></span></span>
+					<h3 class="mb-4">{c.t}</h3>
+					<ul role="list" class="grid gap-2 body">{c.items.map((i) => <li class="border-b border-[var(--line)] pb-2">{i}</li>)}</ul>
+					{c.link && <a href={c.link.href} class="link mt-4 inline-block text-[14.5px] font-semibold">{c.link.label} →</a>}
+				</div>
+			))}
+		</div>
+		<p class="body mt-10 max-w-[60ch]">This is a partial list. If you don’t see what you’re looking for, ask us. Chances are it’s in our wheelhouse.</p>
+	</Section>
+
+	<Section tone="light" id="why">
+		<SectionHeader overline="Why us" before="Specialists, by " em="design" after="." />
+		<div class="mt-12 grid gap-px border border-[var(--line)] bg-[var(--line)] desk:grid-cols-3">
+			{why.map((w) => <div class="bg-[var(--card)] p-7"><h3 class="mb-3">{w.t}</h3><p class="body">{w.d}</p></div>)}
+		</div>
+		<Note class="mt-6">Changed on purpose: the current site’s third reason, “Technology Independent,” says Mediabarn has no bias because it doesn’t sell a software product. With a Product pillar, that’s no longer true, so it’s rewritten as “We recommend what fits.” Please review.</Note>
+	</Section>
+
+	<Section id="industries">
+		<SectionHeader overline="Where we work" before="Two sectors where experience is " em="hardest" after=" to get right." />
+		<div class="mt-12 grid gap-6 desk:grid-cols-2">
+			{[
+				{ t: 'Federal', h: '/federal/', d: 'Human-Centered Design for agencies and the people they serve: CX, user research, service design, and UX governance. Available through GSA MAS and the NIST Human Factors and Usability BPA.' },
+				{ t: 'Healthcare', h: '/healthcare/', d: 'Enterprise CX for patients, practitioners, and payers, with research run under strict protocols and HIPAA compliance.' },
+			].map((x) => (
+				<a href={x.h} class="group block border border-[var(--line)] hover:border-[var(--red)]">
+					<Placeholder label={`${x.t} photo`} ratio="16/9" class="!border-0 !border-b" />
+					<div class="p-6"><h3 class="mb-2">{x.t} <span aria-hidden="true" class="inline-block transition-transform group-hover:translate-x-1">→</span></h3><p class="body">{x.d}</p></div>
+				</a>
+			))}
+		</div>
+	</Section>
+
+	<Section tone="light" id="work">
+		<SectionHeader overline="Case studies" before="What changed for the " em="people" after=" we designed for.">A few examples of how our work made a difference for clients and their users.</SectionHeader>
+		<div class="mt-12 grid gap-6 desk:grid-cols-3">
+			{cases.map((c) => (
+				<article class="flex flex-col border border-[var(--line)] bg-[var(--card)]">
+					<Placeholder label="Case study image" ratio="4/3" class="!border-0 !border-b" />
+					<div class="flex grow flex-col gap-2 p-6"><p class="eyebrow">{c.who}</p><h3>{c.t}</h3><p class="body grow">{c.d}</p><a href="#" class="link mt-2 self-start text-[14.5px] font-semibold">Read the case study →</a></div>
+				</article>
+			))}
+		</div>
+		<Note class="mt-6">The current site’s case studies are still “Accordion content goes here!” placeholders. We need 3 stories (problem, approach, outcome). Each should name which pillars were involved, which reinforces the loop.</Note>
+	</Section>
+
+	<Cta />
+</BaseLayout>
