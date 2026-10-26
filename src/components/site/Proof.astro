@@ -10,7 +10,7 @@ const stats = [
 ];
 const clients = ['IRS', 'Social Security Administration', 'NIST', 'USPS', 'CMS', 'Sentara Health', 'Sentara Health Plans', 'City of Virginia Beach', 'Under Armour', '[Client]'];
 ---
-<Section tone="dark" glow="dusk">
+<Section tone="dark" glow="dusk" bg={{ label: "the observation room during a study", mood: "dusk" }}>
 	<h2 class="mb-14 max-w-[18ch]">Twenty years of putting real people in the <span class="em">room</span>.</h2>
 	<dl class="grid grid-cols-2 border-t border-[var(--line)] desk:grid-cols-4">
 		{stats.map((s, i) => (
@@ -23,8 +23,8 @@ const clients = ['IRS', 'Social Security Administration', 'NIST', 'USPS', 'CMS',
 	<Note class="mt-4">Bracketed numbers are placeholders. The research site animates counters for participants, years, and honorarium, but the values didn’t load, so we need the real figures.</Note>
 
 	<h3 class="eyebrow mb-5 mt-16">Clients we’ve worked with</h3>
-	<ul role="list" class="grid grid-cols-2 gap-px border border-[var(--line)] bg-[var(--line)] pad:grid-cols-3 desk:grid-cols-5">
-		{clients.map((c) => <li class="grid h-24 place-items-center bg-[var(--espresso)] px-4 text-center text-[13.5px] font-semibold text-[var(--sand)]">{c}</li>)}
+	<ul role="list" class="grid grid-cols-2 gap-4 pad:grid-cols-3 desk:grid-cols-5">
+		{clients.map((c) => <li class="grid h-24 place-items-center glass px-4 text-center text-[13.5px] font-semibold text-[var(--sand)]">{c}</li>)}
 	</ul>
 	<Note class="mt-4">Logo names inferred from the current site’s files. The real logos (white versions already exist) drop into these cells. Confirm the list and permissions.</Note>
 

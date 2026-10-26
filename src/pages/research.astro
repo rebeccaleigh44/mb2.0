@@ -48,13 +48,13 @@ const quotes = [
 	<Section tone="light">
 		<SectionHeader before="Full service, or just the " em="space" after="." />
 		<div class="mt-12 grid gap-6 desk:grid-cols-2">
-			<div class="flex flex-col gap-4 border border-[var(--line-strong)] bg-[var(--card)] p-8">
+			<div class="flex flex-col gap-4 glass p-8">
 				<h3>Full-service research</h3>
 				<p class="body">We plan the study, recruit participants, moderate the sessions, and report what we found.</p>
 				<ul role="list" class="grid gap-1.5 body"><li>– Study design and screeners</li><li>– Recruiting and incentives</li><li>– Moderation and analysis</li><li>– Findings and recommendations</li></ul>
 				<a href="/contact/?topic=research" class="btn mt-auto self-start max-pad:w-full">Plan a study</a>
 			</div>
-			<div class="flex flex-col gap-4 border border-[var(--line)] bg-[var(--card)] p-8">
+			<div class="flex flex-col gap-4 glass p-8">
 				<h3>Facility rental</h3>
 				<p class="body">Your team runs the sessions. We provide the lab, the focus group room, recruiting if you need it, and the hospitality.</p>
 				<ul role="list" class="grid gap-1.5 body"><li>– Usability lab and focus group room</li><li>– Observation behind a two-way mirror</li><li>– Recording and streaming <span class="tbd">[confirm]</span></li><li>– Recruiting, as an add-on</li></ul>
@@ -66,13 +66,13 @@ const quotes = [
 
 	<Section id="services">
 		<SectionHeader before="Research " em="services" after=".">A selection of what we offer. There are plenty more, and yes, we serve delicious cookies.</SectionHeader>
-		<div class="mt-12 grid gap-px border border-[var(--line)] bg-[var(--line)] tab:grid-cols-2 desk:grid-cols-3">
-			{services.map((s) => <div class="bg-[var(--card)] p-7"><h3 class="mb-3">{s.t}</h3><p class="body">{s.d}</p></div>)}
+		<div class="mt-12 grid gap-4 tab:grid-cols-2 desk:grid-cols-3">
+			{services.map((s) => <div class="glass p-7"><h3 class="mb-3">{s.t}</h3><p class="body">{s.d}</p></div>)}
 		</div>
 		<Note class="mt-6">Eye tracking and moderation only appeared as keywords on the current site, so their descriptions are new. Please confirm eye tracking is still offered.</Note>
 	</Section>
 
-	<Section tone="light" id="facility">
+	<Section tone="light" id="facility" bg={{ label: "the focus group room, seen through the mirror", mood: "sand" }}>
 		<SectionHeader before="A lab built for " em="watching" after=" people work.">Our Arlington suite has a dedicated usability lab and a full-service focus group facility with a large two-way mirror, a short walk from the Clarendon Metro.</SectionHeader>
 		<div class="mt-12 grid gap-3 tab:grid-cols-4 tab:grid-rows-2">
 			<Placeholder label="Usability lab" ratio="4/3" class="tab:col-span-2 tab:row-span-2 tab:!aspect-auto tab:h-full" />
@@ -81,21 +81,21 @@ const quotes = [
 			<Placeholder label="Client lounge" ratio="4/3" />
 			<Placeholder label="Mobile testing setup" ratio="4/3" />
 		</div>
-		<dl class="mt-10 grid gap-px border border-[var(--line)] bg-[var(--line)] tab:grid-cols-2 desk:grid-cols-4">
+		<dl class="mt-10 grid gap-4 tab:grid-cols-2 desk:grid-cols-4">
 			{[
 				{ t: 'Focus group room', d: 'Seats [00] participants, [00] observers' },
 				{ t: 'Usability lab', d: '[Desktop, mobile, eye tracking]' },
 				{ t: 'Location', d: '2200 Clarendon Blvd., #1401, Arlington, VA 22201' },
 				{ t: 'Also available', d: 'A second lab in Virginia Beach, and a portable lab' },
-			].map((x) => <div class="bg-[var(--card)] p-5"><dt class="eyebrow mb-1">{x.t}</dt><dd class="font-semibold">{x.d}</dd></div>)}
+			].map((x) => <div class="glass p-5"><dt class="eyebrow mb-1">{x.t}</dt><dd class="font-semibold">{x.d}</dd></div>)}
 		</dl>
 		<Note class="mt-6">“Take a Tour” on the old site was a button with no details. We need room capacities, equipment, and photos. A short video walkthrough would replace the photo grid well. The Clarendon Metro line is my assumption from the address.</Note>
 	</Section>
 
 	<Section>
 		<SectionHeader before="From question to " em="answer" after=", in four steps." />
-		<ol role="list" class="mt-12 grid gap-px border border-[var(--line)] bg-[var(--line)] tab:grid-cols-2 desk:grid-cols-4">
-			{steps.map((s, i) => <li class="bg-[var(--card)] p-7"><span class="font-mono text-[13px] text-[var(--red-ink)]">0{i + 1}</span><h3 class="mb-2 mt-2">{s.t}</h3><p class="body">{s.d}</p></li>)}
+		<ol role="list" class="mt-12 grid gap-4 tab:grid-cols-2 desk:grid-cols-4">
+			{steps.map((s, i) => <li class="glass p-7"><span class="font-mono text-[13px] text-[var(--red-ink)]">0{i + 1}</span><h3 class="mb-2 mt-2">{s.t}</h3><p class="body">{s.d}</p></li>)}
 		</ol>
 	</Section>
 
@@ -103,7 +103,7 @@ const quotes = [
 		<SectionHeader before="Researchers keep coming " em="back" after="." />
 		<div class="mt-12 grid gap-6 desk:grid-cols-3">
 			{quotes.map((q) => (
-				<figure class="flex flex-col gap-4 border border-[var(--line)] bg-[var(--card)] p-7">
+				<figure class="flex flex-col gap-4 glass p-7">
 					<blockquote class="grow text-[17px] leading-[1.55]">“{q.q}”</blockquote>
 					<figcaption class="eyebrow">{q.who}</figcaption>
 				</figure>

@@ -34,17 +34,17 @@ const people = [
 		</div>
 	</section>
 
-	<Section>
+	<Section bg={{ label: "a care team mapping the patient journey", mood: "sand" }}>
 		<SectionHeader before="Outcome-based " em="enterprise" after=" CX for healthcare." />
-		<div class="mt-12 grid gap-px border border-[var(--line)] bg-[var(--line)] tab:grid-cols-2">
-			{pillarsHc.map((s) => <div class="bg-[var(--card)] p-7"><h3 class="mb-3">{s.t}</h3><p class="body">{s.d}</p></div>)}
+		<div class="mt-12 grid gap-4 tab:grid-cols-2">
+			{pillarsHc.map((s) => <div class="glass p-7"><h3 class="mb-3">{s.t}</h3><p class="body">{s.d}</p></div>)}
 		</div>
 	</Section>
 
 	<Section tone="light">
 		<SectionHeader before="Patients, practitioners, and " em="payers" after=".">Our clients include hospital systems, health insurers, medical equipment makers, and federal health agencies.</SectionHeader>
 		<div class="mt-12 grid gap-6 desk:grid-cols-3">
-			{people.map((p) => <div class="border border-[var(--line)] bg-[var(--card)] p-7"><h3 class="mb-3">{p.t}</h3><p class="body">{p.d}</p></div>)}
+			{people.map((p) => <div class="border border-[var(--line)] glass p-7"><h3 class="mb-3">{p.t}</h3><p class="body">{p.d}</p></div>)}
 		</div>
 	</Section>
 

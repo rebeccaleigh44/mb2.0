@@ -28,10 +28,10 @@ const leaders = [
 		</div>
 	</section>
 
-	<Section tone="light">
+	<Section tone="light" bg={{ label: "the Arlington office", mood: "sand" }}>
 		<SectionHeader before="Three pillars, one " em="practice" after=".">Research, design, and product share the same people, the same methods, and the same lab. That’s what lets each one make the others better.</SectionHeader>
-		<div class="mt-12 grid gap-px border border-[var(--line)] bg-[var(--line)] desk:grid-cols-3">
-			{pillars.map((p) => <a href={p.href} class="flex flex-col gap-2 bg-[var(--card)] p-7 hover:bg-[var(--card)]"><span class="h3">{p.name} →</span><span class="eyebrow">{p.verb}</span><span class="body">{p.oneLiner}</span></a>)}
+		<div class="mt-12 grid gap-4 desk:grid-cols-3">
+			{pillars.map((p) => <a href={p.href} class="flex flex-col gap-2 glass p-7"><span class="h3">{p.name} →</span><span class="eyebrow">{p.verb}</span><span class="body">{p.oneLiner}</span></a>)}
 		</div>
 	</Section>
 

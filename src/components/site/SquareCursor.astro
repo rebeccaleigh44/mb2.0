@@ -1,0 +1,22 @@
+---
+// Square cursor: over any element with data-cursor="white|brown|red", the system cursor is replaced by a small
+// shadowed square in that color. Mouse and trackpad only; touch, keyboard and no-JS keep the normal behaviour.
+---
+<div class="sq-cursor" aria-hidden="true"></div>
+<script is:inline>
+	(() => {
+		if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+		const sq = document.querySelector('.sq-cursor');
+		if (!sq) return;
+		document.documentElement.classList.add('sq-cursor-on');
+		addEventListener('pointermove', (e) => {
+			if (e.pointerType !== 'mouse') return;
+			sq.style.setProperty('--x', `${e.clientX}px`);
+			sq.style.setProperty('--y', `${e.clientY}px`);
+			const t = e.target instanceof Element ? e.target.closest('[data-cursor]') : null;
+			if (t) sq.dataset.color = t.dataset.cursor;
+			sq.classList.toggle('on', !!t);
+		}, { passive: true });
+		document.addEventListener('pointerleave', () => sq.classList.remove('on'));
+	})();
+</script>

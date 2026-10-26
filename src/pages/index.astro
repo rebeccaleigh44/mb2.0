@@ -6,7 +6,8 @@ import Section from '@/components/site/Section.astro';
 import SectionHeader from '@/components/site/SectionHeader.astro';
 import Note from '@/components/site/Note.astro';
 import Placeholder from '@/components/site/Placeholder.astro';
-import Waves from '@/components/site/Waves.astro';
+import BgImage from '@/components/site/BgImage.astro';
+import CaseStudies from '@/components/site/CaseStudies.astro';
 import Proof from '@/components/site/Proof.astro';
 import Cta from '@/components/site/Cta.astro';
 import { pillars, products } from '@/data/site';
@@ -35,6 +36,14 @@ const chapters = [
 	},
 ];
 
+// Hero headline: each word links to its chapter of the loop, and sets the square cursor's color
+const heroWords = [
+	{ word: 'Understand.', href: '#ch-research', cursor: 'brown', sr: 'Research' },
+	{ word: 'Shape.', href: '#ch-design', cursor: 'red', sr: 'Design' },
+	{ word: 'Run.', href: '#ch-product', cursor: 'white', sr: 'Product' },
+	{ word: 'Repeat.', href: '#loop-back', cursor: 'brown', sr: 'back to Research', em: true },
+];
+
 // Loop diagram geometry (viewBox 440 × 440): three nodes on a circle, 120° apart, starting at the top
 const C = 220, R = 150;
 const nodes = pillars.map((p, i) => {
@@ -50,8 +59,8 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 
 <BaseLayout title="Understand. Shape. Run." description="Mediabarn brings research, design, and product together in one loop, using Human-Centered Design.">
 	{/* ---------- Hero ---------- */}
-	<section class="noisy glow-paper fibers relative overflow-hidden" aria-labelledby="hero-h">
-		<Waves seed={1} lines={60} />
+	<section class="noisy relative overflow-hidden" aria-labelledby="hero-h">
+		<BgImage label="the lab, through the two-way mirror" scrim="light" mood="sand" labelAt="tr" />
 		{/* drafting overlay: thirds, a baseline, and sheet labels */}
 		<div class="pointer-events-none absolute inset-0 hidden desk:block" aria-hidden="true">
 			<div class="wrap relative h-full">
@@ -62,24 +71,16 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 			</div>
 		</div>
 		<div class="wrap relative grid min-h-[min(820px,calc(100svh-var(--nav-h)))] content-center gap-10 py-20 desk:py-28">
-			<h1 id="hero-h" class="max-w-[11ch]">Understand. Shape. Run. <span class="em em-loop">Repeat.</span></h1>
-			<div class="grid gap-10 desk:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] desk:items-end">
-				<p class="lede max-w-[46ch] !text-[var(--ink)]">Most firms do one of these. We do all three, in order, and each one makes the next one better. Scroll to see how the loop works, or jump to the part you need.</p>
-				<ol role="list" class="grid border-t border-[var(--line-strong)] bg-[color-mix(in_srgb,var(--paper)_88%,transparent)] desk:max-w-[440px] desk:justify-self-end">
-					{nodes.map((p) => (
-						<li class="border-b border-[var(--line)]">
-							<a href={`#ch-${p.id}`} class="group flex items-baseline gap-4 py-3.5">
-								<span class="font-mono text-[12px] text-[var(--red-ink)]">0{p.n}</span>
-								<span class="text-[17px] font-semibold">{p.verb}</span>
-								<span class="font-mono text-[11.5px] uppercase tracking-[0.12em] text-[var(--ink-muted)]">/ {p.name}</span>
-								<span class="arrow ml-auto text-[var(--red-ink)]" aria-hidden="true">↓</span>
-							</a>
-						</li>
-					))}
-				</ol>
-			</div>
+			{/* Each word of the loop jumps to its chapter. They read as a headline, not links: the only cue is the square cursor. */}
+			<h1 id="hero-h" class="hero-words max-w-[11ch]">
+				{heroWords.map((w, i) => <>{i > 0 && ' '}<a href={w.href} data-cursor={w.cursor} class:list={[w.em && 'em em-loop']}>{w.word}<span class="sr-only"> ({w.sr})</span></a></>)}
+			</h1>
+			<p class="lede max-w-[46ch] !text-[var(--ink)]">Most firms do one of these. We do all three, in order, and each one makes the next one better. Scroll to see how the loop works, or pick a word above to jump straight to it.</p>
 		</div>
 	</section>
+
+	{/* ---------- Case studies: the work, before the explanation ---------- */}
+	<CaseStudies more />
 
 	{/* ---------- The loop ---------- */}
 	<section class="rule fibers relative bg-[var(--paper-light)]" aria-labelledby="loop-h">
@@ -130,7 +131,7 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 						</article>
 					);
 				})}
-				<div class="py-16">
+				<div id="loop-back" class="py-16">
 					<p class="h2 mb-4 !text-[clamp(28px,3vw,40px)]">…and back to <span class="em em-loop">Understand</span>.</p>
 					<p class="body max-w-[52ch]">Every product we run and every design we ship goes back through research. That’s the loop, and it’s why the work gets better over time.</p>
 					<Note class="mt-6">“In practice” lines are illustrative and need real (or anonymized) client examples before launch.</Note>
