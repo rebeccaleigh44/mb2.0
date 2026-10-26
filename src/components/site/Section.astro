@@ -1,16 +1,15 @@
 ---
 // Section: a drafting rule across the top with crosshairs where it meets the page gutters,
-// an optional mono label (like a sheet number), and a tone. Content fades up on scroll.
+// and a tone. Content fades up on scroll.
 interface Props {
 	id?: string;
 	tone?: 'paper' | 'light' | 'dark' | 'rust';
 	/** noisy gradient behind the section (dark/rust/paper) */
 	glow?: 'ember' | 'dusk' | 'clay' | 'paper';
-	label?: string;
 	class?: string;
 	reveal?: boolean;
 }
-const { id, tone = 'paper', glow, label, class: cls, reveal = true } = Astro.props;
+const { id, tone = 'paper', glow, class: cls, reveal = true } = Astro.props;
 ---
 <section id={id} class:list={[
 	'rule noisy relative py-[clamp(64px,8vw,128px)]',
@@ -22,7 +21,6 @@ const { id, tone = 'paper', glow, label, class: cls, reveal = true } = Astro.pro
 	<div class="wrap relative">
 		<span class="cross hidden pad:block" style="top:calc(-1 * clamp(64px,8vw,128px) - 7px);left:calc(var(--gut) - 7px)" aria-hidden="true"></span>
 		<span class="cross hidden pad:block" style="top:calc(-1 * clamp(64px,8vw,128px) - 7px);right:calc(var(--gut) - 7px)" aria-hidden="true"></span>
-		{label && <p class="eyebrow mb-10 flex items-center gap-3" aria-hidden="true"><span class="h-px w-8 bg-[var(--line-strong)]"></span>{label}</p>}
 		<div data-reveal={reveal || undefined}><slot /></div>
 	</div>
 </section>

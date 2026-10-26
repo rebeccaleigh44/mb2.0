@@ -13,7 +13,6 @@ import { products } from '@/data/site';
 	<section class="page-hero noisy glow-paper fibers relative overflow-hidden py-[clamp(56px,8vw,120px)]">
 		<Waves seed={11} opacity={0.8} />
 		<div class="wrap">
-			<p class="eyebrow mb-4">Product · Software we build and support</p>
 			<h1 class="mb-6 max-w-[18ch]">Software shaped by <span class="em">research</span>.</h1>
 			<p class="lede max-w-[60ch]">We kept seeing the same problems across clients and industries. For a few of them, the best answer was a product. Each one is designed and tested with the people who use it, by the same team that runs our research lab and design studio.</p>
 			<nav aria-label="Find your product" class="mt-10">
@@ -29,8 +28,8 @@ import { products } from '@/data/site';
 		<section id={p.slug} class:list={['border-t border-[var(--line)] py-[clamp(48px,6vw,88px)]', i % 2 === 1 && 'bg-[var(--paper-light)]']}>
 			<div class="wrap grid gap-10 desk:grid-cols-2 desk:items-center">
 				<div class:list={[i % 2 === 1 && 'desk:order-2']}>
-					<p class="eyebrow mb-3">For {p.for.toLowerCase()}</p>
-					<h2 class="mb-4">{p.name}</h2>
+					<h2>{p.name}</h2>
+					<p class="eyebrow mb-4 mt-2">For {p.for.toLowerCase()}</p>
 					<p class="lede mb-8 max-w-[48ch]">{p.summary}</p>
 					<div class="flex flex-wrap gap-3"><a href={p.href} class="btn max-pad:w-full">Explore {p.name}</a><a href={`/contact/?topic=${p.slug}`} class="btn btn-outline max-pad:w-full">Request a demo</a></div>
 				</div>
@@ -42,7 +41,7 @@ import { products } from '@/data/site';
 	<Section tone="dark">
 		<div class="grid gap-8 desk:grid-cols-[1.2fr_.8fr] desk:items-end">
 			<div>
-				<p class="eyebrow mb-3">Need something custom?</p>
+				
 				<h2 class="mb-4 max-w-[22ch]">If none of these fit, our design studio can build what <span class="em">does</span>.</h2>
 				<p class="body max-w-[56ch]">We’ll start with research, design around what we learn, and recommend the right tools, whether we make them or not.</p>
 			</div>
