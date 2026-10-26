@@ -11,6 +11,7 @@ import CaseStudies from '@/components/site/CaseStudies.astro';
 import Proof from '@/components/site/Proof.astro';
 import Cta from '@/components/site/Cta.astro';
 import { pillars, products } from '@/data/site';
+import { photos } from '@/data/images';
 
 const chapters = [
 	{
@@ -19,6 +20,7 @@ const chapters = [
 		body: 'We watch real people use your product, service, or website, in our Arlington lab or remotely. We recruit the right participants, moderate the sessions, and tell you what we saw, not what we assumed.',
 		example: 'A federal agency learns that most people abandon a benefits form at the same question, and why.',
 		mood: 'sand' as const,
+		image: photos.interviewCamera, alt: 'A camera recording a research interview',
 	},
 	{
 		id: 'design',
@@ -26,6 +28,7 @@ const chapters = [
 		body: 'Using Human-Centered Design (HCD), we turn findings into journey maps, service blueprints, and prototypes, then test them again with the same kinds of people. Accessibility and Section 508 compliance are part of the work from the start.',
 		example: 'The form is redesigned around how applicants describe their situation, and tested until they finish it.',
 		mood: 'ember' as const,
+		image: photos.teamAtWall, alt: 'A team sorting findings on a wall of sticky notes',
 	},
 	{
 		id: 'product',
@@ -33,6 +36,7 @@ const chapters = [
 		body: 'Some problems show up across many clients. For those, we build and support software: Chirp, Edjit, CXAlign, and Mediabarn Time. Each one is tested with its users, which sends us back to research.',
 		example: 'A health system tracks every patient experience initiative in CXAlign and sees where the next round of research is needed.',
 		mood: 'clay' as const,
+		image: photos.cafeLaptop, alt: 'Someone working on a laptop in a café',
 	},
 ];
 
@@ -60,14 +64,13 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 <BaseLayout title="Understand. Shape. Run." description="Mediabarn brings research, design, and product together in one loop, using Human-Centered Design.">
 	{/* ---------- Hero ---------- */}
 	<section class="noisy relative overflow-hidden" aria-labelledby="hero-h">
-		<BgImage label="the lab, through the two-way mirror" scrim="light" mood="sand" labelAt="tr" />
+		<BgImage label="the lab, through the two-way mirror" src={photos.throughTheGlass} scrim="light" mood="sand" focus="62% 40%" side />
 		{/* drafting overlay: thirds, a baseline, and sheet labels */}
 		<div class="pointer-events-none absolute inset-0 hidden desk:block" aria-hidden="true">
 			<div class="wrap relative h-full">
 				<div class="absolute inset-y-0 left-[var(--gut)] border-l border-[var(--line)]"></div>
 				<div class="absolute inset-y-0 right-[var(--gut)] border-r border-[var(--line)]"></div>
 				<div class="absolute inset-y-0 left-[66%] border-l border-dashed border-[var(--line)]"></div>
-				<span class="eyebrow absolute bottom-6 left-[calc(66%+12px)]">Arlington, VA · Virginia Beach, VA</span>
 			</div>
 		</div>
 		<div class="wrap relative grid min-h-[min(820px,calc(100svh-var(--nav-h)))] content-center gap-10 py-20 desk:py-28">
@@ -122,7 +125,7 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 						<article id={`ch-${c.id}`} data-chapter={c.id} aria-labelledby={`ch-${c.id}-h`} class="flex min-h-[85svh] flex-col justify-center gap-6 border-b border-[var(--line)] py-20 last:border-0">
 							<h3 id={`ch-${c.id}-h`} class="h2 max-w-[16ch]">{c.q.replace(/\s(\S+)\?$/, ' $1?')}</h3>
 							<p class="lede">{c.body}</p>
-							<Placeholder label={`${p.name}: photography`} ratio="16/9" mood={c.mood} />
+							<Placeholder label={`${p.name}: photography`} ratio="16/9" mood={c.mood} src={c.image} alt={c.alt} />
 							<div class="grid gap-1 border-l border-[var(--line-strong)] pl-5">
 								<p class="eyebrow">In practice</p>
 								<p class="body">{c.example}</p>
@@ -162,11 +165,11 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 		<SectionHeader before="Built for people who serve the " em="public" after=".">Most of our work is in two areas where experience is hardest to get right: government services and healthcare.</SectionHeader>
 		<div class="mt-16 grid gap-8 tab:grid-cols-2">
 			{[
-				{ t: 'Federal', d: 'Agencies use us to make forms, portals, and services easier for citizens and taxpayers to use, with accessibility and Section 508 compliance built in.', h: '/federal/', mood: 'dusk' as const },
-				{ t: 'Healthcare', d: 'Health systems and health plans use us to map the patient journey, find where it breaks, and track the work that fixes it.', h: '/healthcare/', mood: 'clay' as const },
+				{ t: 'Federal', d: 'Agencies use us to make forms, portals, and services easier for citizens and taxpayers to use, with accessibility and Section 508 compliance built in.', h: '/federal/', mood: 'dusk' as const, img: undefined, alt: '' },
+				{ t: 'Healthcare', d: 'Health systems and health plans use us to map the patient journey, find where it breaks, and track the work that fixes it.', h: '/healthcare/', mood: 'clay' as const, img: photos.telehealthNurse, alt: 'A nurse on a telehealth call' },
 			].map((x, i) => (
 				<a href={x.h} class="group block">
-					<Placeholder label={`${x.t}: photography`} ratio="3/2" mood={x.mood} />
+					<Placeholder label={`${x.t}: photography`} ratio="3/2" mood={x.mood} src={x.img} alt={x.alt} focus="50% 30%" />
 					<div class="mt-6 flex items-baseline gap-4"><span class="font-mono text-[12px] text-[var(--red-ink)]">S0{i + 1}</span><h3 class="h2 !text-[clamp(30px,3vw,42px)] group-hover:text-[var(--red-ink)]">{x.t} <span class="arrow text-[0.6em]" aria-hidden="true">→</span></h3></div>
 					<p class="body mt-3 max-w-[48ch]">{x.d}</p>
 				</a>

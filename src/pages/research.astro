@@ -7,6 +7,7 @@ import SectionHeader from '@/components/site/SectionHeader.astro';
 import Note from '@/components/site/Note.astro';
 import Placeholder from '@/components/site/Placeholder.astro';
 import Cta from '@/components/site/Cta.astro';
+import { photos } from '@/data/images';
 
 const services = [
 	{ t: 'Usability testing', d: 'We watch real people use your product in real time to see whether they can reach their goal, and where they get stuck.' },
@@ -41,7 +42,7 @@ const quotes = [
 				<p class="lede max-w-[54ch]">Better products, better websites, better customer experiences. We offer a full range of research and usability services, plus state-of-the-art lab and focus group facilities in Arlington, Virginia.</p>
 				<div class="mt-8 flex flex-wrap gap-3"><a href="/contact/?topic=lab" class="btn max-pad:w-full">Book the lab</a><a href="#facility" class="btn btn-outline max-pad:w-full">Take a tour</a></div>
 			</div>
-			<Placeholder label="Lab photo: observation room through the glass" ratio="4/3" />
+			<Placeholder label="Lab photo: observation room through the glass" ratio="4/3" src={photos.throughTheGlass} alt="A researcher seen through the observation glass during a study" focus="65% 40%" />
 		</div>
 	</section>
 
@@ -72,7 +73,7 @@ const quotes = [
 		<Note class="mt-6">Eye tracking and moderation only appeared as keywords on the current site, so their descriptions are new. Please confirm eye tracking is still offered.</Note>
 	</Section>
 
-	<Section tone="light" id="facility" bg={{ label: "the focus group room, seen through the mirror", mood: "sand" }}>
+	<Section tone="light" id="facility" bg={{ label: "the Arlington office", src: photos.officeLobby, mood: "sand" }}>
 		<SectionHeader before="A lab built for " em="watching" after=" people work.">Our Arlington suite has a dedicated usability lab and a full-service focus group facility with a large two-way mirror, a short walk from the Clarendon Metro.</SectionHeader>
 		<div class="mt-12 grid gap-3 tab:grid-cols-4 tab:grid-rows-2">
 			<Placeholder label="Usability lab" ratio="4/3" class="tab:col-span-2 tab:row-span-2 tab:!aspect-auto tab:h-full" />
