@@ -7,6 +7,7 @@ import SectionHeader from '@/components/site/SectionHeader.astro';
 import Note from '@/components/site/Note.astro';
 import Placeholder from '@/components/site/Placeholder.astro';
 import Cta from '@/components/site/Cta.astro';
+import { photos } from '@/data/images';
 
 const terms = [
 	{ t: 'Customer Experience (CX)', d: 'CX is the entirety of a customer’s journey with a product, company, or brand. Seeing a message on a billboard, making an online purchase, and calling a help desk are all examples of a customer experience.' },
@@ -27,7 +28,7 @@ const why = [
 
 <BaseLayout title="Experience Design" pillar="design" description="Human-Centered Design for service design, customer experience, and user experience.">
 	<section class="page-hero noisy relative overflow-hidden py-[clamp(72px,10vw,150px)]">
-		<BgImage label="team at a journey-map wall" scrim="light" mood="sand" />
+		<BgImage label="team at a journey-map wall" src={photos.teamAtWall} scrim="light" mood="sand" focus="40% 40%" side />
 		<div class="wrap">
 			<div>
 				<h1 class="mb-6 max-w-[16ch]">Designing experiences the <span class="em">human-centered</span> way.</h1>
@@ -64,7 +65,7 @@ const why = [
 		<p class="body mt-10 max-w-[60ch]">This is a partial list. If you don’t see what you’re looking for, ask us. Chances are it’s in our wheelhouse.</p>
 	</Section>
 
-	<Section tone="light" id="why" bg={{ label: "designers sketching at the studio table", mood: "sand" }}>
+	<Section tone="light" id="why" bg={{ label: "a designer at work", src: photos.cafeLaptop, focus: "50% 60%", mood: "sand" }}>
 		<SectionHeader before="Specialists, by " em="design" after="." />
 		<div class="mt-12 grid gap-4 desk:grid-cols-3">
 			{why.map((w) => <div class="glass p-7"><h3 class="mb-3">{w.t}</h3><p class="body">{w.d}</p></div>)}
@@ -76,11 +77,11 @@ const why = [
 		<SectionHeader before="Two sectors where experience is " em="hardest" after=" to get right." />
 		<div class="mt-12 grid gap-6 desk:grid-cols-2">
 			{[
-				{ t: 'Federal', h: '/federal/', d: 'Human-Centered Design for agencies and the people they serve: CX, user research, service design, and UX governance. Available through GSA MAS and the NIST Human Factors and Usability BPA.' },
-				{ t: 'Healthcare', h: '/healthcare/', d: 'Enterprise CX for patients, practitioners, and payers, with research run under strict protocols and HIPAA compliance.' },
+				{ t: 'Federal', h: '/federal/', d: 'Human-Centered Design for agencies and the people they serve: CX, user research, service design, and UX governance. Available through GSA MAS and the NIST Human Factors and Usability BPA.' , img: undefined, alt: '' },
+				{ t: 'Healthcare', h: '/healthcare/', d: 'Enterprise CX for patients, practitioners, and payers, with research run under strict protocols and HIPAA compliance.' , img: photos.healthMeeting, alt: 'A health system team in a planning meeting' },
 			].map((x) => (
 				<a href={x.h} class="glass group block overflow-hidden">
-					<Placeholder label={`${x.t} photo`} ratio="16/9" class="!border-0 !border-b" />
+					<Placeholder label={`${x.t} photo`} ratio="16/9" class="!border-0 !border-b" src={x.img} alt={x.alt} />
 					<div class="p-6"><h3 class="mb-2">{x.t} <span aria-hidden="true" class="inline-block transition-transform group-hover:translate-x-1">→</span></h3><p class="body">{x.d}</p></div>
 				</a>
 			))}

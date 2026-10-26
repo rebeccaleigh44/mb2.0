@@ -7,6 +7,7 @@ import Placeholder from '@/components/site/Placeholder.astro';
 import Note from '@/components/site/Note.astro';
 import Engage from '@/components/site/Engage.astro';
 import Cta from '@/components/site/Cta.astro';
+import { photos } from '@/data/images';
 
 const pillarsHc = [
 	{ t: 'Outcome focused', d: 'We tie the work to your organization’s goals. We help set measures such as customer effort, satisfaction, and Net Promoter Score (NPS), and assess the business value of key journeys.' },
@@ -30,11 +31,11 @@ const people = [
 				<p class="lede max-w-[56ch]">Healthcare journeys cross digital and traditional channels, and aligning them takes time. We provide enterprise customer experience (CX) strategy, planning, and execution that improves those journeys step by step as your CX practice matures.</p>
 				<div class="mt-8 flex flex-wrap gap-3"><a href="/contact/" class="btn max-pad:w-full">Talk to our healthcare team</a><a href="/product/cx-align/" class="btn btn-outline max-pad:w-full">See CXAlign</a></div>
 			</div>
-			<Placeholder label="Healthcare photo" ratio="4/3" />
+			<Placeholder label="Healthcare photo" ratio="4/3" src={photos.telehealthNurse} alt="A nurse on a telehealth call" focus="50% 30%" />
 		</div>
 	</section>
 
-	<Section bg={{ label: "a care team mapping the patient journey", mood: "sand" }}>
+	<Section bg={{ label: "a care team planning together", src: photos.healthMeeting, mood: "sand" }}>
 		<SectionHeader before="Outcome-based " em="enterprise" after=" CX for healthcare." />
 		<div class="mt-12 grid gap-4 tab:grid-cols-2">
 			{pillarsHc.map((s) => <div class="glass p-7"><h3 class="mb-3">{s.t}</h3><p class="body">{s.d}</p></div>)}

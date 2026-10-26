@@ -2,6 +2,7 @@
 // "Engage with us": how agencies and partners can buy. Shared by Federal and Healthcare.
 import Section from './Section.astro';
 import SectionHeader from './SectionHeader.astro';
+import { vehicleLogos } from '@/data/images';
 const vehicles = ['GSA MAS Contract #GS-07F-289BA', 'NIST Human Factors and Usability BPA', '8(a) joint venture partnerships', 'Teaming arrangements', 'Subcontracts through large federal consulting firms', 'Purchase card and micro-purchase'];
 ---
 <Section tone="light" id="engage">
@@ -9,7 +10,7 @@ const vehicles = ['GSA MAS Contract #GS-07F-289BA', 'NIST Human Factors and Usab
 	<ol role="list" class="mt-14 grid border-t border-[var(--line)] tab:grid-cols-2 desk:grid-cols-3">
 		{vehicles.map((v, i) => <li class="flex gap-4 border-b border-[var(--line)] py-5 pr-6"><span class="font-mono text-[12px] text-[var(--red-ink)]">{String(i + 1).padStart(2, '0')}</span><span class="font-semibold">{v}</span></li>)}
 	</ol>
-	<div class="mt-8 flex flex-wrap gap-3">
-		{['GSA', 'DSC', 'SBA'].map((l) => <div class="grid h-14 w-32 place-items-center border border-dashed border-[var(--line-strong)] font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--ink-muted)]">{l} logo</div>)}
+	<div class="mt-8 flex flex-wrap gap-4">
+		{vehicleLogos.map((l) => <div class="glass grid h-16 w-40 place-items-center px-5"><img src={l.src} alt={l.name} loading="lazy" class="vehicle-logo max-h-8 max-w-full object-contain" /></div>)}
 	</div>
 </Section>
