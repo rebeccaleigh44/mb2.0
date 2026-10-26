@@ -37,7 +37,6 @@ const quotes = [
 		<Waves seed={2} opacity={0.8} />
 		<div class="wrap grid gap-10 desk:grid-cols-[1.1fr_.9fr] desk:items-end">
 			<div>
-				<p class="eyebrow mb-4">Research · Labs and recruiting</p>
 				<h1 class="mb-6 max-w-[15ch]">User testing makes things <span class="em">better</span>.</h1>
 				<p class="lede max-w-[54ch]">Better products, better websites, better customer experiences. We offer a full range of research and usability services, plus state-of-the-art lab and focus group facilities in Arlington, Virginia.</p>
 				<div class="mt-8 flex flex-wrap gap-3"><a href="/contact/?topic=lab" class="btn max-pad:w-full">Book the lab</a><a href="#facility" class="btn btn-outline max-pad:w-full">Take a tour</a></div>
@@ -47,7 +46,7 @@ const quotes = [
 	</section>
 
 	<Section tone="light">
-		<SectionHeader overline="Two ways to work with us" before="Full service, or just the " em="space" after="." />
+		<SectionHeader before="Full service, or just the " em="space" after="." />
 		<div class="mt-12 grid gap-6 desk:grid-cols-2">
 			<div class="flex flex-col gap-4 border border-[var(--line-strong)] bg-[var(--card)] p-8">
 				<h3>Full-service research</h3>
@@ -66,7 +65,7 @@ const quotes = [
 	</Section>
 
 	<Section id="services">
-		<SectionHeader overline="What we do" before="Research " em="services" after=".">A selection of what we offer. There are plenty more, and yes, we serve delicious cookies.</SectionHeader>
+		<SectionHeader before="Research " em="services" after=".">A selection of what we offer. There are plenty more, and yes, we serve delicious cookies.</SectionHeader>
 		<div class="mt-12 grid gap-px border border-[var(--line)] bg-[var(--line)] tab:grid-cols-2 desk:grid-cols-3">
 			{services.map((s) => <div class="bg-[var(--card)] p-7"><h3 class="mb-3">{s.t}</h3><p class="body">{s.d}</p></div>)}
 		</div>
@@ -74,7 +73,7 @@ const quotes = [
 	</Section>
 
 	<Section tone="light" id="facility">
-		<SectionHeader overline="Take a tour" before="A lab built for " em="watching" after=" people work.">Our Arlington suite has a dedicated usability lab and a full-service focus group facility with a large two-way mirror, a short walk from the Clarendon Metro.</SectionHeader>
+		<SectionHeader before="A lab built for " em="watching" after=" people work.">Our Arlington suite has a dedicated usability lab and a full-service focus group facility with a large two-way mirror, a short walk from the Clarendon Metro.</SectionHeader>
 		<div class="mt-12 grid gap-3 tab:grid-cols-4 tab:grid-rows-2">
 			<Placeholder label="Usability lab" ratio="4/3" class="tab:col-span-2 tab:row-span-2 tab:!aspect-auto tab:h-full" />
 			<Placeholder label="Focus group room" ratio="4/3" />
@@ -94,14 +93,14 @@ const quotes = [
 	</Section>
 
 	<Section>
-		<SectionHeader overline="How a study works" before="From question to " em="answer" after=", in four steps." />
+		<SectionHeader before="From question to " em="answer" after=", in four steps." />
 		<ol role="list" class="mt-12 grid gap-px border border-[var(--line)] bg-[var(--line)] tab:grid-cols-2 desk:grid-cols-4">
 			{steps.map((s, i) => <li class="bg-[var(--card)] p-7"><span class="font-mono text-[13px] text-[var(--red-ink)]">0{i + 1}</span><h3 class="mb-2 mt-2">{s.t}</h3><p class="body">{s.d}</p></li>)}
 		</ol>
 	</Section>
 
 	<Section tone="light">
-		<SectionHeader overline="What our clients say" before="Researchers keep coming " em="back" after="." />
+		<SectionHeader before="Researchers keep coming " em="back" after="." />
 		<div class="mt-12 grid gap-6 desk:grid-cols-3">
 			{quotes.map((q) => (
 				<figure class="flex flex-col gap-4 border border-[var(--line)] bg-[var(--card)] p-7">

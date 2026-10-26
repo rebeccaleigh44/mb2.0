@@ -58,16 +58,14 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 				<div class="absolute inset-y-0 left-[var(--gut)] border-l border-[var(--line)]"></div>
 				<div class="absolute inset-y-0 right-[var(--gut)] border-r border-[var(--line)]"></div>
 				<div class="absolute inset-y-0 left-[66%] border-l border-dashed border-[var(--line)]"></div>
-				<span class="eyebrow absolute right-[calc(var(--gut)+12px)] top-6">Sheet 01 / The loop</span>
 				<span class="eyebrow absolute bottom-6 left-[calc(66%+12px)]">Arlington, VA · Virginia Beach, VA</span>
 			</div>
 		</div>
 		<div class="wrap relative grid min-h-[min(820px,calc(100svh-var(--nav-h)))] content-center gap-10 py-20 desk:py-28">
-			<p class="eyebrow eyebrow-em flex items-center gap-3"><span class="h-px w-8 bg-[var(--red)]" aria-hidden="true"></span>Mediabarn · Human-Centered Design</p>
-			<h1 id="hero-h" class="max-w-[11ch]">Understand. Shape. Run. <span class="em">Repeat.</span></h1>
+			<h1 id="hero-h" class="max-w-[11ch]">Understand. Shape. Run. <span class="em em-loop">Repeat.</span></h1>
 			<div class="grid gap-10 desk:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] desk:items-end">
 				<p class="lede max-w-[46ch] !text-[var(--ink)]">Most firms do one of these. We do all three, in order, and each one makes the next one better. Scroll to see how the loop works, or jump to the part you need.</p>
-				<ol role="list" class="grid border-t border-[var(--line-strong)] desk:max-w-[440px] desk:justify-self-end">
+				<ol role="list" class="grid border-t border-[var(--line-strong)] bg-[color-mix(in_srgb,var(--paper)_88%,transparent)] desk:max-w-[440px] desk:justify-self-end">
 					{nodes.map((p) => (
 						<li class="border-b border-[var(--line)]">
 							<a href={`#ch-${p.id}`} class="group flex items-baseline gap-4 py-3.5">
@@ -90,7 +88,6 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 			{/* Sticky diagram. Desktop: a drafting circle with three stations. Below desk: a step bar under the nav. */}
 			<div class="loop-pin sticky z-10 -mx-[var(--gut)] border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--paper-light)_92%,transparent)] px-[var(--gut)] py-2.5 backdrop-blur desk:mx-0 desk:h-[calc(100svh-var(--nav-h))] desk:max-h-[760px] desk:border-0 desk:bg-transparent desk:p-0 desk:py-12 desk:backdrop-blur-none">
 				<div class="hidden h-full flex-col desk:flex">
-					<p class="eyebrow mb-2">Fig. 01 / The loop</p>
 					<svg viewBox="0 0 440 440" class="min-h-0 w-full flex-1" aria-hidden="true">
 						<circle cx={C} cy={C} r="205" fill="none" stroke="var(--line)" />
 						{ticks.map((t) => <line x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} stroke={t.long ? 'var(--line-strong)' : 'var(--line)'} />)}
@@ -122,11 +119,10 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 					const p = pillars.find((x) => x.id === c.id)!;
 					return (
 						<article id={`ch-${c.id}`} data-chapter={c.id} aria-labelledby={`ch-${c.id}-h`} class="flex min-h-[85svh] flex-col justify-center gap-6 border-b border-[var(--line)] py-20 last:border-0">
-							<p class="eyebrow flex items-center gap-3"><span class="eyebrow-em">0{i + 1}</span><span class="h-px w-8 bg-[var(--line-strong)]" aria-hidden="true"></span>{p.verb} / {p.name}</p>
 							<h3 id={`ch-${c.id}-h`} class="h2 max-w-[16ch]">{c.q.replace(/\s(\S+)\?$/, ' $1?')}</h3>
 							<p class="lede">{c.body}</p>
 							<Placeholder label={`${p.name}: photography`} ratio="16/9" mood={c.mood} />
-							<div class="grid gap-1 border-l-2 border-[var(--red)] pl-5">
+							<div class="grid gap-1 border-l border-[var(--line-strong)] pl-5">
 								<p class="eyebrow">In practice</p>
 								<p class="body">{c.example}</p>
 							</div>
@@ -135,7 +131,7 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 					);
 				})}
 				<div class="py-16">
-					<p class="h2 mb-4 !text-[clamp(28px,3vw,40px)]">…and back to <span class="em">Understand</span>.</p>
+					<p class="h2 mb-4 !text-[clamp(28px,3vw,40px)]">…and back to <span class="em em-loop">Understand</span>.</p>
 					<p class="body max-w-[52ch]">Every product we run and every design we ship goes back through research. That’s the loop, and it’s why the work gets better over time.</p>
 					<Note class="mt-6">“In practice” lines are illustrative and need real (or anonymized) client examples before launch.</Note>
 				</div>
@@ -144,13 +140,12 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 	</section>
 
 	{/* ---------- Product index ---------- */}
-	<Section label="Index / Products">
+	<Section>
 		<SectionHeader before="Software that came out of the " em="work" after=".">We kept seeing the same problems across clients, so we built tools for them. Each one runs on the same research and design methods as our client work.</SectionHeader>
 		<ol role="list" class="mt-16 border-t border-[var(--line-strong)]">
-			{products.map((p, i) => (
+			{products.map((p) => (
 				<li class="border-b border-[var(--line)]">
-					<a href={p.href} class="group grid items-baseline gap-x-8 gap-y-2 py-7 tab:grid-cols-[48px_1fr_1.4fr_auto]">
-						<span class="font-mono text-[12px] text-[var(--red-ink)]">P{String(i + 1).padStart(2, '0')}</span>
+					<a href={p.href} class="group grid items-baseline gap-x-8 gap-y-2 py-7 tab:grid-cols-[1fr_1.4fr_auto]">
 						<span><span class="font-serif text-[clamp(30px,3.2vw,44px)] leading-none transition-colors group-hover:text-[var(--red-ink)]">{p.name}</span><span class="eyebrow mt-2 block">For {p.for.toLowerCase()}</span></span>
 						<span class="body">{p.summary}</span>
 						<span class="arrow hidden text-[22px] text-[var(--red-ink)] tab:inline" aria-hidden="true">→</span>
@@ -162,7 +157,7 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 	</Section>
 
 	{/* ---------- Sectors ---------- */}
-	<Section tone="light" label="Where we work">
+	<Section tone="light">
 		<SectionHeader before="Built for people who serve the " em="public" after=".">Most of our work is in two areas where experience is hardest to get right: government services and healthcare.</SectionHeader>
 		<div class="mt-16 grid gap-8 tab:grid-cols-2">
 			{[
