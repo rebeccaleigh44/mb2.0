@@ -31,18 +31,18 @@ const services = [
 		</div>
 	</section>
 
-	<Section>
+	<Section bg={{ label: "a service design workshop with agency staff", mood: "sand" }}>
 		<SectionHeader before="Research and design built for " em="agencies" after="." />
-		<div class="mt-12 grid gap-px border border-[var(--line)] bg-[var(--line)] tab:grid-cols-2 desk:grid-cols-3">
-			{services.map((s) => <div class="flex flex-col gap-3 bg-[var(--card)] p-7"><h3>{s.t}</h3><p class="body grow">{s.d}</p>{s.link && <a href={s.link} class="link self-start text-[14.5px] font-semibold">See Research →</a>}</div>)}
+		<div class="mt-12 grid gap-4 tab:grid-cols-2 desk:grid-cols-3">
+			{services.map((s) => <div class="flex flex-col gap-3 glass p-7"><h3>{s.t}</h3><p class="body grow">{s.d}</p>{s.link && <a href={s.link} class="link self-start text-[14.5px] font-semibold">See Research →</a>}</div>)}
 		</div>
 	</Section>
 
 	<Section tone="light">
 		<SectionHeader before="Start with a project, or build a " em="practice" after="." />
 		<div class="mt-12 grid gap-6 desk:grid-cols-2">
-			<div class="border border-[var(--line)] bg-[var(--card)] p-7"><h3 class="mb-3">Specialized HCD</h3><p class="body">Project-based work with a defined scope: a usability study, a journey map, a redesign of one service.</p></div>
-			<div class="border border-[var(--line)] bg-[var(--card)] p-7"><h3 class="mb-3">CX Centers of Excellence (CoE)</h3><p class="body">We help agencies centralize CX strategy, governance, and execution, so good practice spreads across programs instead of living in one team.</p></div>
+			<div class="border border-[var(--line)] glass p-7"><h3 class="mb-3">Specialized HCD</h3><p class="body">Project-based work with a defined scope: a usability study, a journey map, a redesign of one service.</p></div>
+			<div class="border border-[var(--line)] glass p-7"><h3 class="mb-3">CX Centers of Excellence (CoE)</h3><p class="body">We help agencies centralize CX strategy, governance, and execution, so good practice spreads across programs instead of living in one team.</p></div>
 		</div>
 	</Section>
 

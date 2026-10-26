@@ -63,7 +63,7 @@ const anyConfirm = d.features.some((f) => f.confirm);
 	<Section tone="light">
 		<SectionHeader before="Built for the people who " em="use" after=" it." />
 		<div class="mt-12 grid gap-6 desk:grid-cols-3">
-			{d.audience.map((a) => <div class="border border-[var(--line)] bg-[var(--card)] p-7"><h3 class="mb-3">{a.t}</h3><p class="body">{a.d}</p></div>)}
+			{d.audience.map((a) => <div class="border border-[var(--line)] glass p-7"><h3 class="mb-3">{a.t}</h3><p class="body">{a.d}</p></div>)}
 		</div>
 	</Section>
 
@@ -77,8 +77,8 @@ const anyConfirm = d.features.some((f) => f.confirm);
 			{d.pricing ? (
 				<div class="border border-[var(--line-strong)] p-8"><p class="eyebrow mb-2">Pricing</p><p class="h3 mb-4">{d.pricing}</p><a href={`/contact/?topic=${p.slug}`} class="btn max-pad:w-full">{d.cta}</a></div>
 			) : (
-				<div class="grid gap-px self-start border border-[var(--line)] bg-[var(--line)] pad:grid-cols-3">
-					{[['Tested', 'with real users in our lab'], ['Supported', 'by the team that built it'], ['Improved', 'from what users tell us']].map(([t, s]) => <div class="bg-[var(--card)] p-5"><p class="h4">{t}</p><p class="body text-[14.5px]">{s}</p></div>)}
+				<div class="grid gap-4 self-start  pad:grid-cols-3">
+					{[['Tested', 'with real users in our lab'], ['Supported', 'by the team that built it'], ['Improved', 'from what users tell us']].map(([t, s]) => <div class="glass p-5"><p class="h4">{t}</p><p class="body text-[14.5px]">{s}</p></div>)}
 				</div>
 			)}
 		</div>
@@ -88,7 +88,7 @@ const anyConfirm = d.features.some((f) => f.confirm);
 	<Section tone="light">
 		<p class="eyebrow mb-6">More from Mediabarn Product</p>
 		<ul role="list" class="grid gap-4 desk:grid-cols-3">
-			{others.map((o) => <li><a href={o.href} class="flex h-full flex-col gap-2 border border-[var(--line)] bg-[var(--card)] p-6 hover:border-[var(--red)]"><span class="h3">{o.name} →</span><span class="eyebrow">{o.for}</span><span class="body text-[15px]">{o.summary}</span></a></li>)}
+			{others.map((o) => <li><a href={o.href} class="flex h-full flex-col gap-2 glass p-6 hover:border-[var(--red)]"><span class="h3">{o.name} →</span><span class="eyebrow">{o.for}</span><span class="body text-[15px]">{o.summary}</span></a></li>)}
 		</ul>
 	</Section>
 

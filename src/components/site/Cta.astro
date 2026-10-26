@@ -1,6 +1,6 @@
 ---
 // Closing CTA, from the current site's "How can we help": warm, short, one aside.
-import Waves from './Waves.astro';
+import BgImage from './BgImage.astro';
 interface Props { heading?: string; em?: string; after?: string; body?: string }
 const {
 	heading = 'How can we ',
@@ -10,7 +10,7 @@ const {
 } = Astro.props;
 ---
 <section class="rust noisy glow-clay relative overflow-hidden py-[clamp(72px,9vw,140px)]">
-	<Waves seed={3} opacity={0.9} />
+	<BgImage label="a research session in progress" scrim="rust" mood="clay" labelAt="tr" />
 	<div class="wrap relative grid gap-10 desk:grid-cols-[1.3fr_1fr] desk:items-end">
 		<div>
 			<h2 class="max-w-[16ch] !text-[clamp(40px,6vw,88px)]">{heading}<span class="em">{em}</span>{after}</h2>

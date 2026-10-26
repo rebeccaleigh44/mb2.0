@@ -1,7 +1,10 @@
 ---
 // Section: a drafting rule across the top with crosshairs where it meets the page gutters,
-// and a tone. Content fades up on scroll.
+// and a tone, optionally over a background photo. Content fades up on scroll.
+import BgImage from './BgImage.astro';
 interface Props {
+	/** full-bleed background photo (placeholder until supplied) */
+	bg?: { label: string; src?: string; mood?: 'ember' | 'dusk' | 'clay' | 'sand' };
 	id?: string;
 	tone?: 'paper' | 'light' | 'dark' | 'rust';
 	/** noisy gradient behind the section (dark/rust/paper) */
@@ -9,7 +12,8 @@ interface Props {
 	class?: string;
 	reveal?: boolean;
 }
-const { id, tone = 'paper', glow, class: cls, reveal = true } = Astro.props;
+const { id, tone = 'paper', glow, bg, class: cls, reveal = true } = Astro.props;
+const scrim = tone === 'dark' ? 'dark' : tone === 'rust' ? 'rust' : 'light';
 ---
 <section id={id} class:list={[
 	'rule noisy relative py-[clamp(64px,8vw,128px)]',
@@ -17,6 +21,7 @@ const { id, tone = 'paper', glow, class: cls, reveal = true } = Astro.props;
 	glow && `glow-${glow}`,
 	cls,
 ]}>
+	{bg && <BgImage label={bg.label} src={bg.src} mood={bg.mood} scrim={scrim} labelAt="tr" />}
 	<div class="pointer-events-none absolute inset-0 hidden pad:block" aria-hidden="true"><div class="wrap h-full"><div class="h-full border-x border-[var(--line)]"></div></div></div>
 	<div class="wrap relative">
 		<span class="cross hidden pad:block" style="top:calc(-1 * clamp(64px,8vw,128px) - 7px);left:calc(var(--gut) - 7px)" aria-hidden="true"></span>

@@ -7,7 +7,7 @@ interface Props { pillar?: PillarId }
 const { pillar } = Astro.props;
 const path = Astro.url.pathname;
 ---
-<header class="sticky top-0 z-40 border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--paper)_96%,transparent)] backdrop-blur-md">
+<header class="sticky top-0 z-40 border-b border-[color-mix(in_srgb,#FFFFFF_45%,transparent)] bg-[color-mix(in_srgb,var(--paper-light)_62%,transparent)] shadow-[inset_0_1px_0_color-mix(in_srgb,#FFFFFF_55%,transparent),0_10px_30px_-18px_color-mix(in_srgb,var(--espresso)_45%,transparent)] backdrop-blur-xl backdrop-saturate-150">
 	<div class="wrap grid desk:h-[var(--nav-h)] min-h-[62px] grid-cols-[auto_1fr] items-center gap-x-6 desk:grid-cols-[1fr_auto_1fr]">
 		<a href="/" class="py-3" aria-label="Mediabarn home"><Logo class="h-[38px] w-auto pad:h-[42px]" /></a>
 
@@ -17,9 +17,9 @@ const path = Astro.url.pathname;
 					<li class:list={[i > 0 && 'border-l border-[var(--line)]']}>
 						<a href={p.href} aria-current={pillar === p.id ? 'page' : undefined}
 							class="group relative flex items-baseline justify-center gap-2 whitespace-nowrap px-2 py-3 desk:h-[var(--nav-h)] desk:items-center desk:py-0">
-							<span class="font-mono text-[12px] text-[var(--ink-muted)]" aria-hidden="true">0{i + 1}</span>
+							<span class="font-mono text-[12px] text-[var(--ink)] opacity-80" aria-hidden="true">0{i + 1}</span>
 							<span class:list={['text-[15px] font-semibold', pillar === p.id ? 'text-[var(--red-ink)]' : 'text-[var(--ink)] group-hover:text-[var(--red-ink)]']}>{p.name}</span>
-							<span class="hidden font-mono text-[12px] uppercase tracking-[0.06em] text-[var(--ink-muted)] tab:inline">/ {p.verb}</span>
+							<span class="hidden font-mono text-[12px] uppercase tracking-[0.06em] text-[var(--ink)] tab:inline">/ {p.verb}</span>
 							<span class:list={['absolute inset-x-3 bottom-0 h-[2px] origin-left bg-[var(--red)] transition-transform duration-300', pillar === p.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100']} aria-hidden="true"></span>
 						</a>
 					</li>

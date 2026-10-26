@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Waves from '@/components/site/Waves.astro';
+import BgImage from '@/components/site/BgImage.astro';
+import CaseStudies from '@/components/site/CaseStudies.astro';
 import Section from '@/components/site/Section.astro';
 import SectionHeader from '@/components/site/SectionHeader.astro';
 import Note from '@/components/site/Note.astro';
@@ -22,25 +23,21 @@ const why = [
 	{ t: 'Our own research labs', d: 'We were one of the first CX consultancies to build in-house research lab facilities. With full lab operations and a dedicated recruiting team, we involve real users throughout the design process, not just at the end.' },
 	{ t: 'We recommend what fits', d: 'We build a few products of our own, and they came out of client work. But when we design for you, we recommend the tools and platforms that fit your needs, including ones we don’t make. The experience comes first.' },
 ];
-const cases = [
-	{ who: 'Federal agency', t: '[Case study title]', d: '[One-sentence outcome: what changed for citizens, with a number if we have one.]' },
-	{ who: 'Health system', t: '[Case study title]', d: '[One-sentence outcome: what changed for patients or staff.]' },
-	{ who: 'Commercial', t: '[Case study title]', d: '[One-sentence outcome: what changed for customers.]' },
-];
 ---
 
 <BaseLayout title="Experience Design" pillar="design" description="Human-Centered Design for service design, customer experience, and user experience.">
-	<section class="page-hero noisy glow-paper fibers relative overflow-hidden py-[clamp(56px,8vw,120px)]">
-		<Waves seed={4} opacity={0.8} />
-		<div class="wrap grid gap-10 desk:grid-cols-[1.1fr_.9fr] desk:items-end">
+	<section class="page-hero noisy relative overflow-hidden py-[clamp(72px,10vw,150px)]">
+		<BgImage label="team at a journey-map wall" scrim="light" mood="sand" />
+		<div class="wrap">
 			<div>
 				<h1 class="mb-6 max-w-[16ch]">Designing experiences the <span class="em">human-centered</span> way.</h1>
 				<p class="lede max-w-[54ch]">We use Human-Centered Design (HCD) to understand what people need, collect their feedback, and use it to improve services and products. Whether the people are customers, citizens, patients, or employees, every design we make is informed by research.</p>
-				<div class="mt-8 flex flex-wrap gap-3"><a href="/contact/" class="btn max-pad:w-full">Talk to the design team</a><a href="#what" class="btn btn-outline max-pad:w-full">What we do</a></div>
+				<div class="mt-8 flex flex-wrap gap-3"><a href="#work" class="btn max-pad:w-full">See our work <span class="arrow" aria-hidden="true">↓</span></a><a href="/contact/" class="btn btn-outline max-pad:w-full">Talk to the design team</a></div>
 			</div>
-			<Placeholder label="Studio photo: team at a journey-map wall" ratio="4/3" />
 		</div>
 	</section>
+
+	<CaseStudies />
 
 	<Section tone="light" id="think">
 		<SectionHeader before="CX, UX, and Service Design are " em="not" after=" the same thing.">These terms are often used interchangeably. We provide all three, and we think it’s worth explaining the difference.</SectionHeader>
@@ -67,10 +64,10 @@ const cases = [
 		<p class="body mt-10 max-w-[60ch]">This is a partial list. If you don’t see what you’re looking for, ask us. Chances are it’s in our wheelhouse.</p>
 	</Section>
 
-	<Section tone="light" id="why">
+	<Section tone="light" id="why" bg={{ label: "designers sketching at the studio table", mood: "sand" }}>
 		<SectionHeader before="Specialists, by " em="design" after="." />
-		<div class="mt-12 grid gap-px border border-[var(--line)] bg-[var(--line)] desk:grid-cols-3">
-			{why.map((w) => <div class="bg-[var(--card)] p-7"><h3 class="mb-3">{w.t}</h3><p class="body">{w.d}</p></div>)}
+		<div class="mt-12 grid gap-4 desk:grid-cols-3">
+			{why.map((w) => <div class="glass p-7"><h3 class="mb-3">{w.t}</h3><p class="body">{w.d}</p></div>)}
 		</div>
 		<Note class="mt-6">Changed on purpose: the current site’s third reason, “Technology Independent,” says Mediabarn has no bias because it doesn’t sell a software product. With a Product pillar, that’s no longer true, so it’s rewritten as “We recommend what fits.” Please review.</Note>
 	</Section>
@@ -82,25 +79,12 @@ const cases = [
 				{ t: 'Federal', h: '/federal/', d: 'Human-Centered Design for agencies and the people they serve: CX, user research, service design, and UX governance. Available through GSA MAS and the NIST Human Factors and Usability BPA.' },
 				{ t: 'Healthcare', h: '/healthcare/', d: 'Enterprise CX for patients, practitioners, and payers, with research run under strict protocols and HIPAA compliance.' },
 			].map((x) => (
-				<a href={x.h} class="group block border border-[var(--line)] hover:border-[var(--red)]">
+				<a href={x.h} class="glass group block overflow-hidden">
 					<Placeholder label={`${x.t} photo`} ratio="16/9" class="!border-0 !border-b" />
 					<div class="p-6"><h3 class="mb-2">{x.t} <span aria-hidden="true" class="inline-block transition-transform group-hover:translate-x-1">→</span></h3><p class="body">{x.d}</p></div>
 				</a>
 			))}
 		</div>
-	</Section>
-
-	<Section tone="light" id="work">
-		<SectionHeader before="What changed for the " em="people" after=" we designed for.">A few examples of how our work made a difference for clients and their users.</SectionHeader>
-		<div class="mt-12 grid gap-6 desk:grid-cols-3">
-			{cases.map((c) => (
-				<article class="flex flex-col border border-[var(--line)] bg-[var(--card)]">
-					<Placeholder label="Case study image" ratio="4/3" class="!border-0 !border-b" />
-					<div class="flex grow flex-col gap-2 p-6"><h3>{c.t}</h3><p class="eyebrow">{c.who}</p><p class="body grow">{c.d}</p><a href="#" class="link mt-2 self-start text-[14.5px] font-semibold">Read the case study →</a></div>
-				</article>
-			))}
-		</div>
-		<Note class="mt-6">The current site’s case studies are still “Accordion content goes here!” placeholders. We need 3 stories (problem, approach, outcome). Each should name which pillars were involved, which reinforces the loop.</Note>
 	</Section>
 
 	<Cta />
