@@ -98,7 +98,7 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 						<line x1="12" y1={C} x2="428" y2={C} stroke="var(--line)" />
 						<circle cx={C} cy={C} r="62" fill="var(--paper-light)" stroke="var(--line)" />
 						<text x={C} y={C - 4} text-anchor="middle" class="font-serif" style="font-size:26px" fill="var(--ink)">HCD</text>
-						<text x={C} y={C + 16} text-anchor="middle" style="font:500 8.5px var(--font-mono);letter-spacing:.14em" fill="var(--ink-muted)">HUMAN-CENTERED</text>
+						<text x={C} y={C + 16} text-anchor="middle" style="font:600 8.5px var(--font-sans);letter-spacing:.14em" fill="var(--ink-muted)">HUMAN-CENTERED</text>
 						{nodes.map((n) => (
 							<g data-node={n.id} class="node">
 								<circle cx={n.x} cy={n.y} r="54" class="node-disc" />
@@ -111,7 +111,7 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 					<p class="eyebrow mt-2 text-right">Research → Design → Product → Research</p>
 				</div>
 				<ol role="list" class="grid grid-cols-3 gap-1.5 desk:hidden" aria-hidden="true">
-					{nodes.map((p) => <li data-node={p.id} class="row-node flex items-baseline justify-center gap-1.5 border border-[var(--line)] py-1.5 text-[13px] font-semibold"><span class="font-mono text-[10.5px]">0{p.n}</span>{p.verb}</li>)}
+					{nodes.map((p) => <li data-node={p.id} class="row-node flex items-baseline justify-center gap-1.5 border border-[var(--line)] py-1.5 text-[13px] font-semibold"><span class="font-semibold text-[10.5px]">0{p.n}</span>{p.verb}</li>)}
 				</ol>
 			</div>
 
@@ -167,7 +167,7 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 			].map((x, i) => (
 				<a href={x.h} class="group block">
 					<Placeholder label={`${x.t}: photography`} ratio="3/2" mood={x.mood} src={x.img} alt={x.alt} focus="50% 30%" />
-					<div class="mt-6 flex items-baseline gap-4"><span class="font-mono text-[12px] text-[var(--red-ink)]">S0{i + 1}</span><h3 class="h2 !text-[clamp(30px,3vw,42px)] group-hover:text-[var(--red-ink)]">{x.t} <span class="arrow text-[0.6em]" aria-hidden="true">→</span></h3></div>
+					<div class="mt-6 flex items-baseline gap-4"><span class="font-semibold text-[12px] text-[var(--red-ink)]">S0{i + 1}</span><h3 class="h2 !text-[clamp(30px,3vw,42px)] group-hover:text-[var(--red-ink)]">{x.t} <span class="arrow text-[0.6em]" aria-hidden="true">→</span></h3></div>
 					<p class="body mt-3 max-w-[48ch]">{x.d}</p>
 				</a>
 			))}
@@ -184,9 +184,9 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 	@media (width >= 1021px) { .loop-pin { top: var(--nav-h); } }
 
 	.node-disc { fill: var(--paper-light); stroke: var(--line-strong); stroke-width: 1; transition: fill .4s, stroke .4s; }
-	.node-num { font: 500 9px var(--font-mono); letter-spacing: .12em; fill: var(--red-ink); transition: fill .4s; }
+	.node-num { font: 600 9px var(--font-sans); letter-spacing: .12em; fill: var(--red-ink); transition: fill .4s; }
 	.node-verb { font: 400 18px var(--font-serif); fill: var(--ink); transition: fill .4s; }
-	.node-name { font: 500 8px var(--font-mono); letter-spacing: .14em; fill: var(--ink-muted); transition: fill .4s; }
+	.node-name { font: 600 8px var(--font-sans); letter-spacing: .14em; fill: var(--ink-muted); transition: fill .4s; }
 	.node.on .node-disc { fill: var(--red-deep); stroke: var(--red-deep); }
 	.node.on .node-num, .node.on .node-verb { fill: var(--paper-light); }
 	.node.on .node-name { fill: color-mix(in srgb, var(--paper-light) 80%, transparent); }

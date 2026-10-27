@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "@fontsource/gfs-didot/latin-400.css";
 @import "@fontsource-variable/inter";
-@import "@fontsource/ibm-plex-mono/latin-400.css";
-@import "@fontsource/ibm-plex-mono/latin-500.css";
 
 /* =========================================================================
    Mediabarn brand, from mediabarninc.com (2026-10-26):
@@ -79,7 +77,6 @@
 @theme {
   --font-sans: "Inter Variable", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-serif: Didot, "GFS Didot", "Bodoni 72", "Bodoni MT", Georgia, serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --breakpoint-pad: 621px;
   --breakpoint-tab: 761px;
   --breakpoint-desk: 1021px;
@@ -215,7 +212,7 @@ html.sq-cursor-on [data-cursor], html.sq-cursor-on [data-cursor] * { cursor: non
 .sq-cursor[data-color="brown"] { --sq: var(--cocoa); }
 .sq-cursor[data-color="red"] { --sq: var(--red); }
 
-.tbd { background: color-mix(in srgb, var(--red) 12%, transparent); padding: 0 4px; font-family: var(--font-mono); font-size: .88em; }
+.tbd { background: color-mix(in srgb, var(--red) 12%, transparent); padding: 0 4px; font-weight: 600; font-size: .88em; }
 
 :focus-visible { outline: 2px solid var(--red-deep); outline-offset: 3px; }
 .dark :focus-visible, .rust :focus-visible { outline-color: var(--paper-light); }
