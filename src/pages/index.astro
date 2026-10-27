@@ -65,10 +65,10 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 	{/* ---------- Hero ---------- */}
 	<section class="noisy relative overflow-hidden" aria-labelledby="hero-h">
 		<BgImage label="the lab, the team and the work" scrim="light" mood="sand" side slides={[
+			{ src: photos.researchInterview, focus: '55% 40%' },
+			{ src: photos.designWorkshop, focus: '85% 45%' },
 			{ src: photos.throughTheGlass, focus: '62% 40%' },
-			{ src: photos.teamAtWall, focus: '50% 40%' },
 			{ src: photos.officeLobby, focus: '50% 50%' },
-			{ src: photos.interviewCamera, focus: '50% 45%' },
 		]} />
 		<div class="wrap relative grid min-h-[min(820px,calc(100svh-var(--nav-h)))] content-center gap-10 py-20 desk:py-28">
 			{/* Each word of the loop jumps to its chapter. They read as a headline, not links: the only cue is the square cursor. */}
