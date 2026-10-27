@@ -1,7 +1,6 @@
 ---
 // Replaces the Creative Staffing link everywhere. This is the new Mediabarn Product "site".
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Waves from '@/components/site/Waves.astro';
 import Section from '@/components/site/Section.astro';
 import SectionHeader from '@/components/site/SectionHeader.astro';
 import Note from '@/components/site/Note.astro';
@@ -11,7 +10,6 @@ import { products } from '@/data/site';
 ---
 <BaseLayout title="Product" pillar="product" description="Software built and supported by Mediabarn: Chirp, Edjit, CXAlign, and Mediabarn Time.">
 	<section class="page-hero noisy glow-paper fibers relative overflow-hidden py-[clamp(56px,8vw,120px)]">
-		<Waves seed={11} opacity={0.8} />
 		<div class="wrap">
 			<h1 class="mb-6 max-w-[18ch]">Software shaped by <span class="em">research</span>.</h1>
 			<p class="lede max-w-[60ch]">We kept seeing the same problems across clients and industries. For a few of them, the best answer was a product. Each one is designed and tested with the people who use it, by the same team that runs our research lab and design studio.</p>

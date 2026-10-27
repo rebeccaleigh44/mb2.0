@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Waves from '@/components/site/Waves.astro';
 import Section from '@/components/site/Section.astro';
 import SectionHeader from '@/components/site/SectionHeader.astro';
 import Placeholder from '@/components/site/Placeholder.astro';
@@ -23,7 +22,6 @@ const people = [
 ---
 <BaseLayout title="Healthcare" pillar="design" description="Enterprise customer experience for patients, practitioners, and payers.">
 	<section class="page-hero noisy glow-paper fibers relative overflow-hidden py-[clamp(56px,8vw,120px)]">
-		<Waves seed={6} opacity={0.8} />
 		<div class="wrap grid gap-10 desk:grid-cols-[1.1fr_.9fr] desk:items-end">
 			<div>
 				<nav aria-label="Breadcrumb" class="crumbs mb-4"><a href="/design/">Design</a> / <span aria-current="page">Healthcare</span></nav>
