@@ -4,7 +4,7 @@
 import BgImage from './BgImage.astro';
 import SectionHeader from './SectionHeader.astro';
 import Note from './Note.astro';
-import { cases } from '@/data/cases';
+import { cases, caseHref } from '@/data/cases';
 import { photos } from '@/data/images';
 import { pillars } from '@/data/site';
 interface Props { id?: string; more?: boolean }
@@ -23,12 +23,12 @@ const pillarName = (pid: string) => pillars.find((p) => p.id === pid)?.name;
 						<p class="text-[14px] font-medium text-[var(--fg-muted)]">{c.who} · {c.pillars.map(pillarName).join(' + ')}</p>
 						<h3 class:list={['font-serif font-normal leading-[1.08]', i === 0 ? 'text-[clamp(30px,3.4vw,46px)]' : 'text-[clamp(26px,2.4vw,32px)]']}>{c.title}</h3>
 						<p class="body max-w-[52ch]">{c.outcome}</p>
-						<a href={c.href ?? '#'} class="link mt-1 self-start text-[15px]">Read the case study <span class="arrow" aria-hidden="true">→</span></a>
+						<a href={caseHref(c)} class="link mt-1 self-start text-[15px]">Read the case study <span class="arrow" aria-hidden="true">→</span></a>
 					</div>
 				</article>
 			))}
 		</div>
-		<Note class="mt-6">All three stories are placeholders: the current site’s case studies are still “Accordion content goes here!”. We need problem, approach, and outcome for each, plus a photo, and a page per story (links go nowhere yet).</Note>
+		<Note class="mt-6">All three stories are placeholders: the current site’s case studies are still “Accordion content goes here!”. We need problem, approach, and outcome for each, plus a photo. Each links to a case study page built from the same template.</Note>
 		{more && <a href="/design/#work" class="btn btn-light mt-10 max-pad:w-full">More of our work <span class="arrow" aria-hidden="true">→</span></a>}
 	</div>
 </section>
