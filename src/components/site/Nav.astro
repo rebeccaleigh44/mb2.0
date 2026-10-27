@@ -17,7 +17,7 @@ const path = Astro.url.pathname;
 					<li>
 						<a href={p.href} aria-current={pillar === p.id ? 'page' : undefined}
 							class="group relative flex items-baseline justify-center gap-2 whitespace-nowrap px-2 py-3 desk:h-[var(--nav-h)] desk:items-center desk:py-0">
-							<span class="font-mono text-[12px] text-[var(--ink)] opacity-80" aria-hidden="true">0{i + 1}</span>
+							<span class="font-semibold text-[12px] text-[var(--ink)] opacity-80" aria-hidden="true">0{i + 1}</span>
 							<span class:list={['text-[15px] font-semibold', pillar === p.id ? 'text-[var(--red-ink)]' : 'text-[var(--ink)] group-hover:text-[var(--red-ink)]']}>{p.name}</span>
 							<span class:list={['absolute inset-x-3 bottom-0 h-[2px] origin-left bg-[var(--red)] transition-transform duration-300', pillar === p.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100']} aria-hidden="true"></span>
 						</a>
