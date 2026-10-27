@@ -64,15 +64,12 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
 <BaseLayout title="Understand. Shape. Run." description="Mediabarn brings research, design, and product together in one loop, using Human-Centered Design.">
 	{/* ---------- Hero ---------- */}
 	<section class="noisy relative overflow-hidden" aria-labelledby="hero-h">
-		<BgImage label="the lab, through the two-way mirror" src={photos.throughTheGlass} scrim="light" mood="sand" focus="62% 40%" side />
-		{/* drafting overlay: thirds, a baseline, and sheet labels */}
-		<div class="pointer-events-none absolute inset-0 hidden desk:block" aria-hidden="true">
-			<div class="wrap relative h-full">
-				<div class="absolute inset-y-0 left-[var(--gut)] border-l border-[var(--line)]"></div>
-				<div class="absolute inset-y-0 right-[var(--gut)] border-r border-[var(--line)]"></div>
-				<div class="absolute inset-y-0 left-[66%] border-l border-dashed border-[var(--line)]"></div>
-			</div>
-		</div>
+		<BgImage label="the lab, the team and the work" scrim="light" mood="sand" side slides={[
+			{ src: photos.researchInterview, focus: '55% 40%' },
+			{ src: photos.designWorkshop, focus: '85% 45%' },
+			{ src: photos.throughTheGlass, focus: '62% 40%' },
+			{ src: photos.officeLobby, focus: '50% 50%' },
+		]} />
 		<div class="wrap relative grid min-h-[min(820px,calc(100svh-var(--nav-h)))] content-center gap-10 py-20 desk:py-28">
 			{/* Each word of the loop jumps to its chapter. They read as a headline, not links: the only cue is the square cursor. */}
 			<h1 id="hero-h" class="hero-words max-w-[11ch]">

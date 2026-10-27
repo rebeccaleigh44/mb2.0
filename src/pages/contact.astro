@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Waves from '@/components/site/Waves.astro';
 import Note from '@/components/site/Note.astro';
 import Placeholder from '@/components/site/Placeholder.astro';
 import { contact, products } from '@/data/site';
@@ -16,7 +15,6 @@ const field = 'w-full border border-[var(--line-strong)] bg-[var(--card)] px-3 p
 ---
 <BaseLayout title="Contact" description="Start a conversation with Mediabarn about research, design, or product.">
 	<section class="page-hero noisy glow-paper fibers relative overflow-hidden py-[clamp(56px,8vw,120px)]">
-		<Waves seed={9} opacity={0.8} />
 		<div class="wrap grid gap-14 desk:grid-cols-[1.2fr_.8fr]">
 			<div>
 				<h1 class="mb-6 max-w-[14ch]">Start the <span class="em">conversation</span>.</h1>

@@ -12,6 +12,9 @@ import emptyChair from '@/assets/photos/empty-chair.png';
 import peopleWriting from '@/assets/photos/people-writing.png';
 import healthMeeting from '@/assets/photos/health-meeting.png';
 import telehealthNurse from '@/assets/photos/telehealth-nurse.png';
+import researchInterview from '@/assets/photos/research-interview.jpg';
+import designWorkshop from '@/assets/photos/design-workshop.jpg';
+import sunsetDesk from '@/assets/photos/sunset-desk.webp';
 import keith from '@/assets/team/keith.png';
 import jason from '@/assets/team/jason.png';
 import greg from '@/assets/team/greg.png';
@@ -20,6 +23,7 @@ import mauro from '@/assets/team/mauro.jpg';
 export const photos = {
 	officeLobby, throughTheGlass, teamAtWall, laptopAndPhone, wireframeSketch, cafeLaptop,
 	stickyNotes, interviewCamera, emptyChair, peopleWriting, healthMeeting, telehealthNurse,
+	researchInterview, designWorkshop, sunsetDesk,
 };
 export const headshots = { keith, jason, greg, mauro };
 

@@ -14,12 +14,11 @@ const path = Astro.url.pathname;
 		<nav aria-label="Pillars" class="col-span-2 row-start-2 -mx-[var(--gut)] border-t border-[var(--line)] desk:col-span-1 desk:col-start-2 desk:row-start-1 desk:mx-0 desk:border-0">
 			<ol role="list" class="grid grid-cols-3 desk:w-[600px]">
 				{pillars.map((p, i) => (
-					<li class:list={[i > 0 && 'border-l border-[var(--line)]']}>
+					<li>
 						<a href={p.href} aria-current={pillar === p.id ? 'page' : undefined}
 							class="group relative flex items-baseline justify-center gap-2 whitespace-nowrap px-2 py-3 desk:h-[var(--nav-h)] desk:items-center desk:py-0">
 							<span class="font-mono text-[12px] text-[var(--ink)] opacity-80" aria-hidden="true">0{i + 1}</span>
 							<span class:list={['text-[15px] font-semibold', pillar === p.id ? 'text-[var(--red-ink)]' : 'text-[var(--ink)] group-hover:text-[var(--red-ink)]']}>{p.name}</span>
-							<span class="hidden font-mono text-[12px] uppercase tracking-[0.06em] text-[var(--ink)] tab:inline">/ {p.verb}</span>
 							<span class:list={['absolute inset-x-3 bottom-0 h-[2px] origin-left bg-[var(--red)] transition-transform duration-300', pillar === p.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100']} aria-hidden="true"></span>
 						</a>
 					</li>

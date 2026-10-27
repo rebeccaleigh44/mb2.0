@@ -1,7 +1,7 @@
 ---
 // Content from mediabarnresearch.com, updated and restructured. That site becomes this page.
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Waves from '@/components/site/Waves.astro';
+import BgImage from '@/components/site/BgImage.astro';
 import Section from '@/components/site/Section.astro';
 import SectionHeader from '@/components/site/SectionHeader.astro';
 import Note from '@/components/site/Note.astro';
@@ -34,15 +34,14 @@ const quotes = [
 ---
 
 <BaseLayout title="Research" pillar="research" description="Usability testing, participant recruiting, focus groups, and research lab facilities in Arlington, Virginia.">
-	<section class="page-hero noisy glow-paper fibers relative overflow-hidden py-[clamp(56px,8vw,120px)]">
-		<Waves seed={2} opacity={0.8} />
-		<div class="wrap grid gap-10 desk:grid-cols-[1.1fr_.9fr] desk:items-end">
+	<section class="page-hero noisy relative overflow-hidden">
+		<BgImage label="a moderated research interview" src={photos.researchInterview} scrim="light" mood="sand" focus="55% 40%" side />
+		<div class="wrap relative grid min-h-[min(760px,calc(100svh-var(--nav-h)))] content-center py-20 desk:py-28">
 			<div>
-				<h1 class="mb-6 max-w-[15ch]">User testing makes things <span class="em">better</span>.</h1>
-				<p class="lede max-w-[54ch]">Better products, better websites, better customer experiences. We offer a full range of research and usability services, plus state-of-the-art lab and focus group facilities in Arlington, Virginia.</p>
+				<h1 class="mb-6 max-w-[13ch]">User testing makes things <span class="em">better</span>.</h1>
+				<p class="lede max-w-[46ch] !text-[var(--ink)]">Better products, better websites, better customer experiences. We offer a full range of research and usability services, plus state-of-the-art lab and focus group facilities in Arlington, Virginia.</p>
 				<div class="mt-8 flex flex-wrap gap-3"><a href="/contact/?topic=lab" class="btn max-pad:w-full">Book the lab</a><a href="#facility" class="btn btn-outline max-pad:w-full">Take a tour</a></div>
 			</div>
-			<Placeholder label="Lab photo: observation room through the glass" ratio="4/3" src={photos.throughTheGlass} alt="A researcher seen through the observation glass during a study" focus="65% 40%" />
 		</div>
 	</section>
 
